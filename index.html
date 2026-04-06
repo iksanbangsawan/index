@@ -1,738 +1,362 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Iksan Bangsawan — Personal Branding Mentor</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-<style>
-  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-  :root {
-    --cream: #F9F6F1;
-    --ink: #1A1814;
-    --muted: #7A7570;
-    --accent: #B5935A;
-    --border: #E2DDD6;
-    --white: #FFFFFF;
-  }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--cream);
-    color: var(--ink);
-    font-size: 16px;
-    line-height: 1.7;
-    overflow-x: hidden;
-  }
-
-  /* NAV */
-  nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1.5rem 4rem;
-    background: rgba(249, 246, 241, 0.92);
-    backdrop-filter: blur(8px);
-    border-bottom: 0.5px solid var(--border);
-  }
-
-  .nav-logo {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.25rem;
-    font-weight: 400;
-    letter-spacing: 0.04em;
-    color: var(--ink);
-    text-decoration: none;
-  }
-
-  .nav-links {
-    display: flex;
-    gap: 2.5rem;
-    list-style: none;
-  }
-
-  .nav-links a {
-    font-size: 0.8rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--muted);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-
-  .nav-links a:hover { color: var(--ink); }
-
-  .nav-cta {
-    font-size: 0.8rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--accent);
-    text-decoration: none;
-    border-bottom: 0.5px solid var(--accent);
-    padding-bottom: 1px;
-    transition: opacity 0.2s;
-  }
-
-  .nav-cta:hover { opacity: 0.7; }
-
-  /* HERO */
-  .hero {
-    min-height: 100vh;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: center;
-    padding: 0 4rem;
-    gap: 4rem;
-    padding-top: 5rem;
-  }
-
-  .hero-text { max-width: 560px; }
-
-  .hero-eyebrow {
-    font-size: 0.75rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 1.5rem;
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-  }
-
-  .hero-eyebrow::before {
-    content: '';
-    display: block;
-    width: 2rem;
-    height: 0.5px;
-    background: var(--accent);
-  }
-
-  h1 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(3rem, 5vw, 4.5rem);
-    font-weight: 300;
-    line-height: 1.1;
-    letter-spacing: -0.01em;
-    margin-bottom: 1.5rem;
-  }
-
-  h1 em {
-    font-style: italic;
-    color: var(--accent);
-  }
-
-  .hero-desc {
-    font-size: 1rem;
-    color: var(--muted);
-    line-height: 1.8;
-    margin-bottom: 2.5rem;
-    max-width: 440px;
-  }
-
-  .btn-group {
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-  }
-
-  .btn-primary {
-    background: var(--ink);
-    color: var(--cream);
-    padding: 0.85rem 2rem;
-    font-size: 0.8rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    text-decoration: none;
-    transition: background 0.2s;
-    font-family: 'DM Sans', sans-serif;
-  }
-
-  .btn-primary:hover { background: var(--accent); }
-
-  .btn-ghost {
-    font-size: 0.8rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--muted);
-    text-decoration: none;
-    border-bottom: 0.5px solid var(--border);
-    padding-bottom: 2px;
-    transition: color 0.2s, border-color 0.2s;
-  }
-
-  .btn-ghost:hover { color: var(--ink); border-color: var(--ink); }
-
-  /* Hero Visual */
-  .hero-visual {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-  }
-
-  .hero-portrait {
-    width: 420px;
-    height: 520px;
-    background: var(--border);
-    position: relative;
-    overflow: hidden;
-  }
-
-  .portrait-placeholder {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(160deg, #E8E3DA 0%, #D4CFC7 100%);
-  }
-
-  .portrait-initials {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 5rem;
-    font-weight: 300;
-    color: var(--muted);
-    letter-spacing: 0.05em;
-  }
-
-  .portrait-label {
-    font-size: 0.7rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-top: 0.5rem;
-  }
-
-  .hero-badge {
-    position: absolute;
-    bottom: 2rem;
-    left: -1.5rem;
-    background: var(--white);
-    border: 0.5px solid var(--border);
-    padding: 1rem 1.25rem;
-    min-width: 180px;
-  }
-
-  .badge-num {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 2rem;
-    font-weight: 300;
-    color: var(--ink);
-    line-height: 1;
-  }
-
-  .badge-text {
-    font-size: 0.75rem;
-    color: var(--muted);
-    margin-top: 0.25rem;
-  }
-
-  /* DIVIDER */
-  .divider {
-    width: calc(100% - 8rem);
-    height: 0.5px;
-    background: var(--border);
-    margin: 0 4rem;
-  }
-
-  /* ABOUT */
-  .section {
-    padding: 6rem 4rem;
-  }
-
-  .section-tag {
-    font-size: 0.7rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 1rem;
-  }
-
-  h2 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(2rem, 3.5vw, 3rem);
-    font-weight: 300;
-    line-height: 1.2;
-    margin-bottom: 1.5rem;
-  }
-
-  .about-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 6rem;
-    align-items: center;
-  }
-
-  .about-text p {
-    color: var(--muted);
-    margin-bottom: 1rem;
-    line-height: 1.9;
-  }
-
-  .stat-row {
-    display: flex;
-    gap: 2rem;
-    margin-top: 2.5rem;
-    padding-top: 2.5rem;
-    border-top: 0.5px solid var(--border);
-  }
-
-  .stat { flex: 1; }
-
-  .stat-num {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 2.5rem;
-    font-weight: 300;
-    color: var(--ink);
-    line-height: 1;
-  }
-
-  .stat-label {
-    font-size: 0.75rem;
-    color: var(--muted);
-    margin-top: 0.25rem;
-    letter-spacing: 0.05em;
-  }
-
-  .about-highlights {
-    display: flex;
-    flex-direction: column;
-    gap: 1px;
-    background: var(--border);
-    border: 0.5px solid var(--border);
-  }
-
-  .highlight-item {
-    background: var(--cream);
-    padding: 1.5rem 1.75rem;
-    display: flex;
-    align-items: flex-start;
-    gap: 1.25rem;
-    transition: background 0.2s;
-  }
-
-  .highlight-item:hover { background: var(--white); }
-
-  .highlight-num {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.1rem;
-    font-weight: 300;
-    color: var(--accent);
-    min-width: 2rem;
-    padding-top: 2px;
-  }
-
-  .highlight-title {
-    font-size: 0.9rem;
-    font-weight: 500;
-    color: var(--ink);
-    margin-bottom: 0.25rem;
-  }
-
-  .highlight-desc {
-    font-size: 0.82rem;
-    color: var(--muted);
-    line-height: 1.6;
-  }
-
-  /* SERVICES */
-  .services-bg {
-    background: var(--ink);
-    padding: 6rem 4rem;
-  }
-
-  .services-bg .section-tag { color: var(--accent); }
-
-  .services-bg h2 {
-    color: var(--cream);
-    margin-bottom: 3rem;
-  }
-
-  .services-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1px;
-    background: rgba(255,255,255,0.08);
-  }
-
-  .service-card {
-    background: var(--ink);
-    padding: 2.5rem 2rem;
-    border: 0.5px solid rgba(255,255,255,0.08);
-    transition: background 0.2s;
-  }
-
-  .service-card:hover { background: #252319; }
-
-  .service-icon {
-    font-size: 1.5rem;
-    margin-bottom: 1.5rem;
-    opacity: 0.6;
-  }
-
-  .service-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.4rem;
-    font-weight: 300;
-    color: var(--cream);
-    margin-bottom: 0.75rem;
-  }
-
-  .service-desc {
-    font-size: 0.82rem;
-    color: rgba(255,255,255,0.45);
-    line-height: 1.8;
-    margin-bottom: 1.5rem;
-  }
-
-  .service-link {
-    font-size: 0.75rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--accent);
-    text-decoration: none;
-    border-bottom: 0.5px solid var(--accent);
-    padding-bottom: 1px;
-    opacity: 0.8;
-    transition: opacity 0.2s;
-  }
-
-  .service-link:hover { opacity: 1; }
-
-  /* TESTIMONIALS */
-  .testimonials { padding: 6rem 4rem; }
-
-  .testi-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-    margin-top: 3rem;
-  }
-
-  .testi-card {
-    background: var(--white);
-    border: 0.5px solid var(--border);
-    padding: 2rem;
-  }
-
-  .testi-quote {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.15rem;
-    font-weight: 300;
-    font-style: italic;
-    color: var(--ink);
-    line-height: 1.7;
-    margin-bottom: 1.5rem;
-  }
-
-  .testi-author {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-  }
-
-  .testi-avatar {
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    background: var(--border);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.75rem;
-    font-weight: 500;
-    color: var(--muted);
-  }
-
-  .testi-name {
-    font-size: 0.85rem;
-    font-weight: 500;
-    color: var(--ink);
-  }
-
-  .testi-role {
-    font-size: 0.75rem;
-    color: var(--muted);
-  }
-
-  /* CTA */
-  .cta-section {
-    padding: 6rem 4rem;
-    text-align: center;
-    border-top: 0.5px solid var(--border);
-  }
-
-  .cta-section h2 {
-    max-width: 600px;
-    margin: 0 auto 0.75rem;
-  }
-
-  .cta-section p {
-    color: var(--muted);
-    margin-bottom: 2.5rem;
-    font-size: 0.95rem;
-  }
-
-  /* FOOTER */
-  footer {
-    border-top: 0.5px solid var(--border);
-    padding: 2rem 4rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .footer-logo {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1rem;
-    color: var(--muted);
-    text-decoration: none;
-  }
-
-  .footer-text {
-    font-size: 0.75rem;
-    color: var(--muted);
-  }
-
-  .footer-links {
-    display: flex;
-    gap: 1.5rem;
-    list-style: none;
-  }
-
-  .footer-links a {
-    font-size: 0.75rem;
-    color: var(--muted);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-
-  .footer-links a:hover { color: var(--ink); }
-
-  /* ANIMATIONS */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  .hero-text > * {
-    animation: fadeUp 0.7s ease forwards;
-    opacity: 0;
-  }
-
-  .hero-eyebrow { animation-delay: 0.1s; }
-  h1 { animation-delay: 0.25s; }
-  .hero-desc { animation-delay: 0.4s; }
-  .btn-group { animation-delay: 0.55s; }
-
-  .hero-visual {
-    animation: fadeUp 0.9s ease 0.3s forwards;
-    opacity: 0;
-  }
-
-  @media (max-width: 900px) {
-    nav { padding: 1.25rem 2rem; }
-    .nav-links { display: none; }
-    .hero { grid-template-columns: 1fr; padding: 6rem 2rem 3rem; min-height: auto; gap: 2.5rem; }
-    .hero-visual { justify-content: flex-start; }
-    .hero-portrait { width: 100%; height: 320px; }
-    .section, .services-bg, .testimonials, .cta-section { padding: 4rem 2rem; }
-    .about-grid, .services-grid, .testi-grid { grid-template-columns: 1fr; }
-    .stat-row { gap: 1rem; }
-    footer { padding: 1.5rem 2rem; flex-direction: column; gap: 1rem; text-align: center; }
-    .divider { margin: 0 2rem; width: calc(100% - 4rem); }
-  }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iksan Bangsawan | Personal Branding Consultant & Mentor</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        .glass-card:hover {
+            background: rgba(255, 255, 255, 0.07);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            transform: translateY(-5px);
+        }
+        .text-gradient {
+            background: linear-gradient(to right, #fcd34d, #f59e0b, #d97706);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .bg-gradient-gold {
+            background: linear-gradient(to right, #fcd34d, #f59e0b);
+        }
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: #f59e0b;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        .hero-pattern {
+            background-image: radial-gradient(circle at 2px 2px, rgba(255,255,255,0.05) 1px, transparent 0);
+            background-size: 40px 40px;
+        }
+    </style>
 </head>
-<body>
+<body class="bg-[#0a0a0a] text-gray-100">
 
-<nav>
-  <a href="#" class="nav-logo">Iksan Bangsawan</a>
-  <ul class="nav-links">
-    <li><a href="#tentang">Tentang</a></li>
-    <li><a href="#layanan">Layanan</a></li>
-    <li><a href="#testimoni">Testimoni</a></li>
-  </ul>
-  <a href="#konsultasi" class="nav-cta">Konsultasi Gratis</a>
-</nav>
-
-<!-- HERO -->
-<section class="hero" id="beranda">
-  <div class="hero-text">
-    <div class="hero-eyebrow">Personal Branding Mentor</div>
-    <h1>Bangun <em>identitas</em> yang tak terlupakan</h1>
-    <p class="hero-desc">
-      Saya membantu profesional dan pengusaha menemukan keunikan mereka, membangun kepercayaan, dan tampil sebagai pemimpin yang diingat — di dunia nyata maupun digital.
-    </p>
-    <div class="btn-group">
-      <a href="#konsultasi" class="btn-primary">Mulai Perjalanan</a>
-      <a href="#layanan" class="btn-ghost">Lihat Layanan</a>
-    </div>
-  </div>
-
-  <div class="hero-visual">
-    <div class="hero-portrait" style="position: relative;">
-      <div class="portrait-placeholder">
-        <div class="portrait-initials">IB</div>
-        <div class="portrait-label">Foto Anda di sini</div>
-      </div>
-      <div class="hero-badge">
-        <div class="badge-num">200+</div>
-        <div class="badge-text">Klien yang berhasil<br>membangun brand mereka</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- ABOUT -->
-<section class="section" id="tentang">
-  <div class="about-grid">
-    <div class="about-text">
-      <div class="section-tag">Tentang Saya</div>
-      <h2>Kepercayaan dimulai dari <em>kejelasan</em> diri</h2>
-      <p>Selama lebih dari satu dekade, saya mendampingi para profesional — mulai dari eksekutif korporat, founder startup, hingga kreator konten — dalam menemukan suara mereka yang sesungguhnya.</p>
-      <p>Personal branding bukan tentang berpura-pura menjadi orang lain. Ini tentang menampilkan diri Anda yang paling autentik, dengan strategi yang tepat.</p>
-      <div class="stat-row">
-        <div class="stat">
-          <div class="stat-num">10+</div>
-          <div class="stat-label">Tahun pengalaman</div>
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 top-0 left-0 bg-[#0a0a0a]/80 backdrop-blur-md border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <div class="flex-shrink-0 flex items-center">
+                    <span class="text-2xl font-bold tracking-tighter text-gradient">IKSAN BANGSAWAN</span>
+                </div>
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#perjalanan" class="nav-link text-sm font-medium hover:text-amber-400 transition">Perjalanan</a>
+                    <a href="#bisnis" class="nav-link text-sm font-medium hover:text-amber-400 transition">Bisnis</a>
+                    <a href="#skill" class="nav-link text-sm font-medium hover:text-amber-400 transition">Keahlian</a>
+                    <a href="https://wa.me/message/B2PEBBW7CWPJE1" target="_blank" class="bg-gradient-gold text-black px-6 py-2.5 rounded-full font-bold text-sm hover:opacity-90 transition shadow-lg shadow-amber-500/20">
+                        Konsultasi Sekarang
+                    </a>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button class="text-gray-400 hover:text-white">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
         </div>
-        <div class="stat">
-          <div class="stat-num">200+</div>
-          <div class="stat-label">Klien terbimbing</div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden hero-pattern">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <div class="inline-flex items-center px-4 py-1.5 rounded-full border border-amber-500/30 bg-amber-500/10 text-amber-400 text-xs font-semibold mb-6 tracking-wider uppercase">
+                        High-Ticket Personal Branding Consultant
+                    </div>
+                    <h1 class="text-5xl lg:text-7xl font-extrabold leading-tight mb-6">
+                        Ubah Kreativitas Menjadi <span class="text-gradient">Otoritas Digital.</span>
+                    </h1>
+                    <p class="text-gray-400 text-lg mb-8 leading-relaxed max-w-xl">
+                        Membantu entrepreneur dan profesional membangun persona yang relevan, dipercaya, dan menghasilkan melalui strategi konten yang tepat sasaran.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="https://wa.me/message/B2PEBBW7CWPJE1" class="px-8 py-4 bg-gradient-gold text-black rounded-xl font-bold text-center hover:scale-105 transition-transform">
+                            Hubungi Iksan (Admin)
+                        </a>
+                        <a href="#bisnis" class="px-8 py-4 bg-white/5 border border-white/10 rounded-xl font-bold text-center hover:bg-white/10 transition">
+                            Lihat Portfolio Bisnis
+                        </a>
+                    </div>
+                    
+                    <div class="mt-12 flex items-center gap-6">
+                        <div class="flex -space-x-3">
+                            <div class="w-10 h-10 rounded-full border-2 border-[#0a0a0a] bg-gray-800 flex items-center justify-center text-xs font-bold text-amber-400">IB</div>
+                            <div class="w-10 h-10 rounded-full border-2 border-[#0a0a0a] bg-gray-700 flex items-center justify-center text-xs font-bold text-amber-300">SK</div>
+                            <div class="w-10 h-10 rounded-full border-2 border-[#0a0a0a] bg-gray-600 flex items-center justify-center text-xs font-bold text-amber-200">BT</div>
+                        </div>
+                        <p class="text-sm text-gray-500">Mentoring sudah berjalan hingga <span class="text-white font-semibold">Batch ke-11</span></p>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div class="absolute -top-20 -right-20 w-80 h-80 bg-amber-500/10 rounded-full blur-[100px]"></div>
+                    <div class="relative rounded-3xl overflow-hidden border border-white/10 aspect-[4/5] bg-gray-900 group">
+                        <!-- Placeholder for User Image -->
+                        <div class="absolute inset-0 flex items-center justify-center bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent z-10"></div>
+                        <div class="absolute inset-0 flex items-center justify-center text-gray-500 italic p-12 text-center">
+                            [Foto Profil Iksan Bangsawan yang Profesional]
+                        </div>
+                        <div class="absolute bottom-8 left-8 right-8 z-20 glass-card p-4 rounded-2xl">
+                            <div class="flex justify-between items-center">
+                                <div>
+                                    <p class="text-xs text-amber-400 font-bold uppercase tracking-widest">Followers Total</p>
+                                    <p class="text-2xl font-bold">358.000+</p>
+                                </div>
+                                <div class="flex gap-3 text-xl">
+                                    <i class="fa-brands fa-instagram text-pink-500"></i>
+                                    <i class="fa-brands fa-tiktok text-white"></i>
+                                    <i class="fa-brands fa-youtube text-red-600"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="stat">
-          <div class="stat-num">50+</div>
-          <div class="stat-label">Workshop digelar</div>
+    </section>
+
+    <!-- Social Proof / Brands -->
+    <div class="border-y border-white/5 bg-white/[0.02] py-12">
+        <div class="max-w-7xl mx-auto px-4">
+            <p class="text-center text-gray-500 text-sm font-semibold uppercase tracking-[0.2em] mb-8">Telah Berkolaborasi Dengan Brand Ternama</p>
+            <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-50 grayscale hover:grayscale-0 transition duration-500">
+                <span class="text-xl font-bold">GOOGLE</span>
+                <span class="text-xl font-bold">SPOTIFY</span>
+                <span class="text-xl font-bold">PHILIPS</span>
+                <span class="text-xl font-bold">GOTRADE</span>
+                <span class="text-xl font-bold">TELKOMSEL</span>
+                <span class="text-xl font-bold">BANK INDONESIA</span>
+            </div>
         </div>
-      </div>
     </div>
 
-    <div class="about-highlights">
-      <div class="highlight-item">
-        <div class="highlight-num">01</div>
-        <div>
-          <div class="highlight-title">Pendekatan berbasis riset</div>
-          <div class="highlight-desc">Setiap strategi dibangun dari pemahaman mendalam tentang diri Anda, audiens, dan pasar.</div>
+    <!-- About / Journey -->
+    <section id="perjalanan" class="py-24 bg-[#0a0a0a]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-16 items-start">
+                <div class="sticky top-32">
+                    <h2 class="text-3xl lg:text-5xl font-bold mb-6">Cerita Singkat <br/><span class="text-gradient">Iksan Bangsawan</span></h2>
+                    <p class="text-gray-400 leading-relaxed mb-6 italic">
+                        "Terima kasih sudah berkunjung ke halaman profile saya yang bukan siapa-siapa ini."
+                    </p>
+                    <p class="text-gray-300 leading-relaxed mb-6">
+                        Lulusan Teknik yang 'salah jurusan' namun menemukan passion di dunia kreatif sejak 2008. Mulai dari desain grafis hingga Augmented Reality, saya percaya kreativitas adalah pintu rezeki yang luas.
+                    </p>
+                    <div class="grid grid-cols-2 gap-6 mt-8">
+                        <div class="p-4 border-l-2 border-amber-500">
+                            <h4 class="text-2xl font-bold">2008</h4>
+                            <p class="text-xs text-gray-500 uppercase font-bold tracking-wider">Awal Mula Konten</p>
+                        </div>
+                        <div class="p-4 border-l-2 border-amber-500">
+                            <h4 class="text-2xl font-bold">350rb+</h4>
+                            <p class="text-xs text-gray-500 uppercase font-bold tracking-wider">Followers (6 Bulan)</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="space-y-8">
+                    <div class="glass-card p-8 rounded-3xl">
+                        <div class="w-12 h-12 bg-amber-500/10 rounded-xl flex items-center justify-center text-amber-500 mb-6">
+                            <i class="fa-solid fa-rocket text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Visi Utama</h3>
+                        <p class="text-gray-400">Membantu lebih banyak orang untuk menemukan potensi kreatifnya, membangun personal branding yang kuat, dan menjadi pebisnis yang relevan di era digital.</p>
+                    </div>
+                    
+                    <div class="glass-card p-8 rounded-3xl">
+                        <div class="w-12 h-12 bg-blue-500/10 rounded-xl flex items-center justify-center text-blue-500 mb-6">
+                            <i class="fa-solid fa-microphone text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Aktivitas & Peran</h3>
+                        <ul class="space-y-3 text-gray-400">
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-amber-500 text-xs"></i> <span><b>Content Creator</b> - Berbagi ide kreatif.</span></li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-amber-500 text-xs"></i> <span><b>Creativepreneur</b> - Hobi menjadi penghasilan.</span></li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-amber-500 text-xs"></i> <span><b>Mentor</b> - Program Mentoring Batch 11.</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="highlight-item">
-        <div class="highlight-num">02</div>
-        <div>
-          <div class="highlight-title">Autentisitas di atas segalanya</div>
-          <div class="highlight-desc">Saya tidak menciptakan persona palsu. Saya membantu Anda menjadi versi terbaik diri sendiri.</div>
-        </div>
-      </div>
-      <div class="highlight-item">
-        <div class="highlight-num">03</div>
-        <div>
-          <div class="highlight-title">Hasil yang terukur</div>
-          <div class="highlight-desc">Dari engagement media sosial hingga peluang berbicara, setiap progres bisa dilacak.</div>
-        </div>
-      </div>
-      <div class="highlight-item">
-        <div class="highlight-num">04</div>
-        <div>
-          <div class="highlight-title">Pendampingan jangka panjang</div>
-          <div class="highlight-desc">Brand yang kuat dibangun seiring waktu. Saya ada di setiap langkah perjalanan Anda.</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- SERVICES -->
-<section class="services-bg" id="layanan">
-  <div class="section-tag">Layanan</div>
-  <h2>Apa yang bisa kita kerjakan<br><em>bersama</em></h2>
-  <div class="services-grid">
-    <div class="service-card">
-      <div class="service-icon">◈</div>
-      <div class="service-title">Brand Discovery Session</div>
-      <div class="service-desc">Sesi intensif satu-satu untuk menggali nilai, keunikan, dan visi Anda. Pondasi dari semua yang akan kita bangun.</div>
-      <a href="#konsultasi" class="service-link">Pelajari lebih lanjut</a>
-    </div>
-    <div class="service-card">
-      <div class="service-icon">◉</div>
-      <div class="service-title">Strategi Konten & Narasi</div>
-      <div class="service-desc">Bangun cerita yang konsisten di semua platform — dari LinkedIn hingga panggung pembicara — dengan pesan yang benar-benar Anda.</div>
-      <a href="#konsultasi" class="service-link">Pelajari lebih lanjut</a>
-    </div>
-    <div class="service-card">
-      <div class="service-icon">◇</div>
-      <div class="service-title">Mentoring 1-on-1</div>
-      <div class="service-desc">Program pendampingan 3 bulan dengan sesi mingguan, feedback langsung, dan akses ke komunitas eksklusif.</div>
-      <a href="#konsultasi" class="service-link">Pelajari lebih lanjut</a>
-    </div>
-  </div>
-</section>
-
-<!-- TESTIMONIALS -->
-<section class="testimonials" id="testimoni">
-  <div style="max-width: 600px;">
-    <div class="section-tag">Testimoni</div>
-    <h2>Apa kata mereka yang telah merasakannya</h2>
-  </div>
-  <div class="testi-grid">
-    <div class="testi-card">
-      <div class="testi-quote">"Setelah 3 bulan bersama Iksan, saya mendapatkan tawaran berbicara di 4 konferensi berbeda. Brand saya akhirnya punya arah yang jelas."</div>
-      <div class="testi-author">
-        <div class="testi-avatar">AR</div>
-        <div>
-          <div class="testi-name">Andi Rahmat</div>
-          <div class="testi-role">Founder, Startup Teknologi</div>
+    <!-- Business Portfolio -->
+    <section id="bisnis" class="py-24 bg-white/[0.01]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-16">
+            <h2 class="text-3xl lg:text-5xl font-bold mb-4">Bisnis yang Saya Bangun</h2>
+            <p class="text-gray-400 max-w-2xl mx-auto">Dari Agency hingga Properti, bukti nyata bahwa strategi branding bisa diimplementasikan ke berbagai sektor industri.</p>
         </div>
-      </div>
-    </div>
-    <div class="testi-card">
-      <div class="testi-quote">"Iksan membantu saya menemukan suara autentik saya. Kini LinkedIn saya tumbuh 10x dan peluang datang sendiri."</div>
-      <div class="testi-author">
-        <div class="testi-avatar">DS</div>
-        <div>
-          <div class="testi-name">Dian Saputri</div>
-          <div class="testi-role">Marketing Director</div>
+        <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-3 gap-8">
+            <!-- Skena Digital -->
+            <div class="glass-card rounded-3xl overflow-hidden flex flex-col h-full group">
+                <div class="h-48 bg-gray-800 relative flex items-center justify-center">
+                    <span class="text-2xl font-bold tracking-widest text-white/20">SKENA</span>
+                    <div class="absolute bottom-4 left-4 bg-amber-500 text-black text-[10px] font-bold px-2 py-1 rounded uppercase">Creative Agency</div>
+                </div>
+                <div class="p-8 flex flex-col flex-grow">
+                    <h3 class="text-xl font-bold mb-2">PT. SKENA Wahana Kreatif</h3>
+                    <p class="text-gray-500 text-sm mb-4">Jakarta & Makassar</p>
+                    <p class="text-gray-300 mb-6 flex-grow">Sudah mengerjakan <span class="text-amber-400 font-bold">400+ proyek</span> dengan tim yang kini berjumlah 30+ orang profesional.</p>
+                    <a href="#" class="inline-flex items-center gap-2 text-amber-400 font-bold hover:gap-4 transition-all">Lihat Website <i class="fa-solid fa-arrow-right text-xs"></i></a>
+                </div>
+            </div>
+
+            <!-- Bangsawan Travel -->
+            <div class="glass-card rounded-3xl overflow-hidden flex flex-col h-full group">
+                <div class="h-48 bg-gray-800 relative flex items-center justify-center">
+                    <span class="text-2xl font-bold tracking-widest text-white/20">TRAVEL</span>
+                    <div class="absolute bottom-4 left-4 bg-blue-500 text-white text-[10px] font-bold px-2 py-1 rounded uppercase">Spiritual Journey</div>
+                </div>
+                <div class="p-8 flex flex-col flex-grow">
+                    <h3 class="text-xl font-bold mb-2">PT. Bangsawan Cahaya Dunia</h3>
+                    <p class="text-gray-500 text-sm mb-4">Travel Umroh Eksklusif</p>
+                    <p class="text-gray-300 mb-6 flex-grow">Membantu jamaah beribadah dengan nyaman melalui layanan travel yang transparan dan amanah.</p>
+                    <a href="#" class="inline-flex items-center gap-2 text-amber-400 font-bold hover:gap-4 transition-all">Lihat Layanan <i class="fa-solid fa-arrow-right text-xs"></i></a>
+                </div>
+            </div>
+
+            <!-- Konstruka -->
+            <div class="glass-card rounded-3xl overflow-hidden flex flex-col h-full group">
+                <div class="h-48 bg-gray-800 relative flex items-center justify-center">
+                    <span class="text-2xl font-bold tracking-widest text-white/20">KONSTRUKA</span>
+                    <div class="absolute bottom-4 left-4 bg-emerald-500 text-black text-[10px] font-bold px-2 py-1 rounded uppercase">Civil & Interior</div>
+                </div>
+                <div class="p-8 flex flex-col flex-grow">
+                    <h3 class="text-xl font-bold mb-2">PT. Konstruka untuk Negeri</h3>
+                    <p class="text-gray-500 text-sm mb-4">Kontraktor & Interior</p>
+                    <p class="text-gray-300 mb-6 flex-grow">Bisnis kontraktor yang berfokus pada kualitas bangunan dan desain interior modern yang terus berkembang.</p>
+                    <a href="#" class="inline-flex items-center gap-2 text-amber-400 font-bold hover:gap-4 transition-all">Lihat Portfolio <i class="fa-solid fa-arrow-right text-xs"></i></a>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-    <div class="testi-card">
-      <div class="testi-quote">"Pendekatan Iksan berbeda — tidak generik, sangat personal. Ia benar-benar memahami konteks dan tujuan saya."</div>
-      <div class="testi-author">
-        <div class="testi-avatar">BW</div>
-        <div>
-          <div class="testi-name">Budi Wicaksono</div>
-          <div class="testi-role">Konsultan Independen</div>
+    </section>
+
+    <!-- Skills & Expertise -->
+    <section id="skill" class="py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-gradient-gold p-[1px] rounded-[3rem]">
+                <div class="bg-[#0a0a0a] rounded-[3rem] p-8 lg:p-16">
+                    <div class="grid lg:grid-cols-2 gap-12 items-center">
+                        <div>
+                            <h2 class="text-4xl font-bold mb-6 text-gradient italic">Expertise & Masteries</h2>
+                            <p class="text-gray-400 mb-8">Kombinasi antara skill teknis dan manajerial yang saya bangun selama lebih dari satu dekade.</p>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div class="flex items-center gap-3 p-4 bg-white/5 rounded-2xl border border-white/5">
+                                    <i class="fa-solid fa-video text-amber-500"></i>
+                                    <span class="text-sm font-semibold">Content Creation</span>
+                                </div>
+                                <div class="flex items-center gap-3 p-4 bg-white/5 rounded-2xl border border-white/5">
+                                    <i class="fa-solid fa-chart-line text-amber-500"></i>
+                                    <span class="text-sm font-semibold">Digital Marketing</span>
+                                </div>
+                                <div class="flex items-center gap-3 p-4 bg-white/5 rounded-2xl border border-white/5">
+                                    <i class="fa-solid fa-users-gear text-amber-500"></i>
+                                    <span class="text-sm font-semibold">Leadership</span>
+                                </div>
+                                <div class="flex items-center gap-3 p-4 bg-white/5 rounded-2xl border border-white/5">
+                                    <i class="fa-solid fa-box-open text-amber-500"></i>
+                                    <span class="text-sm font-semibold">Product Development</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="p-6 glass-card rounded-2xl border-l-4 border-amber-500">
+                                <h4 class="font-bold mb-1">Creative Business Dev</h4>
+                                <p class="text-xs text-gray-500">Membangun & mengelola lintas industri.</p>
+                            </div>
+                            <div class="p-6 glass-card rounded-2xl border-l-4 border-amber-500">
+                                <h4 class="font-bold mb-1">Personal Branding</h4>
+                                <p class="text-xs text-gray-500">Social media growth & content strategy.</p>
+                            </div>
+                            <div class="p-6 glass-card rounded-2xl border-l-4 border-amber-500">
+                                <h4 class="font-bold mb-1">Public Speaking</h4>
+                                <p class="text-xs text-gray-500">Mentor workshop & seminar nasional.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- CTA -->
-<section class="cta-section" id="konsultasi">
-  <div class="section-tag" style="text-align:center;">Mulai Sekarang</div>
-  <h2>Siap tampil sebagai versi terbaik <em>dirimu?</em></h2>
-  <p>Sesi konsultasi gratis 30 menit. Tanpa komitmen, penuh insight.</p>
-  <a href="mailto:hello@iksanbangsawan.com" class="btn-primary">Jadwalkan Konsultasi Gratis</a>
-</section>
+    <!-- CTA Section -->
+    <section class="py-24 relative overflow-hidden">
+        <div class="absolute inset-0 bg-amber-500/10 blur-[150px] -z-10"></div>
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <h2 class="text-4xl lg:text-6xl font-extrabold mb-8">Siap Membangun <br/> <span class="text-gradient">Otoritas Anda?</span></h2>
+            <p class="text-gray-400 text-lg mb-12">Jangan hanya jadi penonton di era digital. Mari bertransformasi menjadi versi terbaik melalui strategi branding dan mentoring yang terukur.</p>
+            
+            <div class="flex flex-col md:flex-row justify-center gap-6">
+                <a href="https://wa.me/message/B2PEBBW7CWPJE1" target="_blank" class="flex items-center justify-center gap-3 px-10 py-5 bg-gradient-gold text-black rounded-2xl font-bold text-lg hover:shadow-2xl hover:shadow-amber-500/40 transition-all">
+                    <i class="fa-brands fa-whatsapp text-2xl"></i>
+                    Hubungi Admin (WhatsApp)
+                </a>
+            </div>
+            
+            <div class="mt-16 pt-16 border-t border-white/10">
+                <p class="text-sm text-gray-500 uppercase tracking-widest font-bold mb-4">Temukan Produk Digital Saya</p>
+                <div class="flex justify-center gap-8">
+                    <a href="#" class="text-gray-400 hover:text-amber-500 transition font-bold uppercase text-xs tracking-tighter border-b border-transparent hover:border-amber-500 pb-1">Template Desain</a>
+                    <a href="#" class="text-gray-400 hover:text-amber-500 transition font-bold uppercase text-xs tracking-tighter border-b border-transparent hover:border-amber-500 pb-1">E-Book Branding</a>
+                    <a href="#" class="text-gray-400 hover:text-amber-500 transition font-bold uppercase text-xs tracking-tighter border-b border-transparent hover:border-amber-500 pb-1">Video Course</a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<!-- FOOTER -->
-<footer>
-  <a href="#" class="footer-logo">Iksan Bangsawan</a>
-  <p class="footer-text">© 2025 Iksan Bangsawan. Semua hak dilindungi.</p>
-  <ul class="footer-links">
-    <li><a href="#">Instagram</a></li>
-    <li><a href="#">LinkedIn</a></li>
-    <li><a href="#">Email</a></li>
-  </ul>
-</footer>
+    <!-- Footer -->
+    <footer class="py-12 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                <div class="text-center md:text-left">
+                    <p class="text-xl font-bold text-gradient">IKSAN BANGSAWAN</p>
+                    <p class="text-xs text-gray-500 mt-1">Creativepreneur & Consultant</p>
+                </div>
+                <div class="flex gap-6 text-gray-400">
+                    <a href="https://instagram.com" class="hover:text-white transition"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://tiktok.com" class="hover:text-white transition"><i class="fa-brands fa-tiktok"></i></a>
+                    <a href="https://youtube.com" class="hover:text-white transition"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="https://linkedin.com" class="hover:text-white transition"><i class="fa-brands fa-linkedin"></i></a>
+                </div>
+                <div class="text-xs text-gray-500 text-center md:text-right font-medium">
+                    &copy; 2024 Iksan Bangsawan. All rights reserved.<br/>
+                    Semoga Hidup Kalian Bertransformasi.
+                </div>
+            </div>
+        </div>
+    </footer>
 
+    <script>
+        // Smooth scroll implementation for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
 </body>
 </html>

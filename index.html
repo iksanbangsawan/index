@@ -1,393 +1,1464 @@
 <!DOCTYPE html>
-<html lang="id"> 
+<html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iksan Bangsawan | Personal Branding Consultant & Mentor</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            scroll-behavior: smooth;
-        }
-        .glass-card {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
-        }
-        .glass-card:hover {
-            background: rgba(255, 255, 255, 0.07);
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            transform: translateY(-5px);
-        }
-        .text-gradient {
-            background: linear-gradient(to right, #fcd34d, #f59e0b, #d97706);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .bg-gradient-gold {
-            background: linear-gradient(to right, #fcd34d, #f59e0b);
-        }
-        .nav-link {
-            position: relative;
-        }
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -4px;
-            left: 0;
-            background-color: #f59e0b;
-            transition: width 0.3s ease;
-        }
-        .nav-link:hover::after {
-            width: 100%;
-        }
-        .hero-pattern {
-            background-image: radial-gradient(circle at 2px 2px, rgba(255,255,255,0.05) 1px, transparent 0);
-            background-size: 40px 40px;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Homepage</title>
+<!-- No external font needed — using PolySans Neutral for everything -->
+<style>
+/* ===== RESET ===== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ===== VARIABLES ===== */
+:root {
+  --bg:      #f0f0f0;
+  --bg2:     #ffffff;
+  --dark:    #24242c;
+  --yellow:  #fff127;
+  --purple:  #8726ca;
+  --accent:  #ffbd03;
+  --muted:   #5a5a66;
+  --border:  rgba(36,36,44,0.1);
+  --border2: rgba(36,36,44,0.18);
+  --sans: 'Polysans', system-ui, sans-serif;
+}
+
+/* ===== BASE ===== */
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--dark);
+  font-family: var(--sans);
+  font-size: 17px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+@font-face {
+  font-family: 'Polysans';
+  src: url('PolySans_Neutral.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+/* Heading weights — add your own woff2 files if you have them */
+@font-face {
+  font-family: 'Polysans';
+  src: local('PolySans-Slim'),
+       url('fonts/PolySans-Slim.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Polysans';
+  src: local('PolySans-Median'),
+       url('fonts/PolySans-Median.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+.heading { font-family: 'Polysans', 'DM Sans', sans-serif; }
+
+/* ===== NAV ===== */
+nav {
+  position: sticky; top: 0; z-index: 200;
+  background: rgba(240,240,240,0.92);
+  border-bottom: 1px solid var(--border);
+  padding: 0 40px;
+  height: 60px;
+  display: flex; align-items: center; justify-content: space-between;
+  backdrop-filter: blur(12px);
+}
+.nav-logo {
+  font-family: 'Polysans', 'DM Sans', sans-serif;
+  font-size: 22px;
+  color: var(--dark);
+  letter-spacing: -0.5px;
+  display: flex; align-items: center; gap: 8px;
+}
+.nav-logo span {
+  display: inline-block;
+  width: 8px; height: 8px;
+  background: var(--purple);
+  border-radius: 50%;
+}
+.nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
+.nav-links a {
+  font-size: 15px; font-weight: 400;
+  color: var(--muted);
+  text-decoration: none;
+  letter-spacing: 0.2px;
+  transition: color .2s;
+}
+.nav-links a:hover { color: var(--dark); }
+.nav-cta {
+  background: var(--dark) !important;
+  color: #f0f0f0 !important;
+  padding: 8px 20px;
+  border-radius: 6px;
+  font-weight: 500 !important;
+  font-size: 15px;
+  transition: opacity .2s !important;
+}
+.nav-cta:hover { opacity: .80 !important; }
+.nav-wa {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 6px;
+  background: #25D366 !important;
+  color: #fff !important;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-weight: 500 !important;
+  font-size: 15px;
+  transition: opacity .2s !important;
+}
+.nav-wa:hover { opacity: .85 !important; }
+.nav-wa svg { flex-shrink: 0; }
+
+/* ===== STATS STRIP ===== */
+.stats-strip {
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 28px 40px;
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  gap: 0;
+  align-items: center;
+}
+.stat-item {
+  flex: 1;
+  padding: 0 32px;
+  border-right: 1px solid var(--border);
+}
+.stat-item:first-child { padding-left: 0; }
+.stat-item:last-child { border-right: none; }
+.stat-num {
+  font-family: 'Polysans','DM Sans',sans-serif;
+  font-size: 30px; color: var(--purple);
+  line-height: 1; margin-bottom: 4px;
+}
+.stat-label { font-size: 14px; color: var(--muted); }
+
+/* ===== LEAD MAGNET ===== */
+.lead-wrap { padding: 40px 40px 64px; max-width: 1100px; margin: 0 auto; }
+.lead-banner {
+  background: #ffffff;
+  border: 1px solid var(--border2);
+  border-left: 4px solid var(--purple);
+  border-radius: 14px;
+  padding: 32px 40px;
+  display: flex; align-items: center; justify-content: space-between; gap: 32px;
+}
+.lead-left { display: flex; align-items: center; gap: 20px; }
+.lead-icon {
+  width: 52px; height: 52px; border-radius: 12px;
+  background: rgba(135,38,202,0.08);
+  border: 1px solid rgba(135,38,202,0.2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px; flex-shrink: 0;
+}
+.lead-text strong {
+  display: block; font-size: 19px;
+  font-family: 'Polysans','DM Sans',sans-serif;
+  color: var(--dark); margin-bottom: 3px;
+}
+.lead-text span { font-size: 15px; color: var(--muted); }
+.free-tag {
+  display: inline-block;
+  background: var(--yellow);
+  color: var(--dark);
+  font-size: 12px; font-weight: 500;
+  letter-spacing: 1px; text-transform: uppercase;
+  padding: 2px 8px; border-radius: 4px; margin-left: 8px;
+  vertical-align: middle;
+}
+.btn-accent {
+  background: var(--purple);
+  color: #fff;
+  padding: 13px 28px;
+  border-radius: 6px;
+  font-size: 16px; font-weight: 500;
+  white-space: nowrap; flex-shrink: 0;
+  text-decoration: none;
+  transition: opacity .2s;
+  cursor: pointer;
+}
+.btn-accent:hover { opacity: .85; }
+
+/* ===== SECTION HEADER ===== */
+.section-wrap { padding: 64px 40px; max-width: 1100px; margin: 0 auto; }
+.section-label {
+  font-size: 13px; font-weight: 500;
+  letter-spacing: 2.5px; text-transform: uppercase;
+  color: var(--purple);
+  margin-bottom: 10px;
+}
+.section-title {
+  font-family: 'Polysans','DM Sans',sans-serif;
+  font-size: 40px; line-height: 1.1;
+  letter-spacing: -1px;
+  color: var(--dark);
+  margin-bottom: 8px;
+}
+.section-sub { font-size: 16px; color: var(--muted); margin-bottom: 36px; max-width: 480px; }
+
+/* ===== FILTER TABS ===== */
+.cat-tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 36px; }
+.tab {
+  padding: 8px 18px; border-radius: 6px;
+  font-size: 15px; font-weight: 400;
+  border: 1px solid var(--border2);
+  color: var(--muted); background: #fff;
+  cursor: pointer; transition: all .18s;
+  font-family: var(--sans);
+}
+.tab.active { background: var(--dark); color: #f0f0f0; border-color: var(--dark); font-weight: 500; }
+.tab:hover:not(.active) { border-color: var(--dark); color: var(--dark); }
+
+/* ===== PRODUCT GRID ===== */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+
+/* card */
+.product-card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: border-color .2s, box-shadow .22s, transform .22s;
+  cursor: pointer;
+  position: relative;
+  display: flex; flex-direction: column;
+}
+.product-card:hover { border-color: var(--border2); transform: translateY(-3px); box-shadow: 0 8px 24px rgba(36,36,44,0.08); }
+.product-card.featured { border-color: var(--purple); border-width: 1.5px; }
+.product-card.free-card { border-style: dashed; border-color: rgba(135,38,202,0.4); }
+
+/* thumbnail */
+.card-thumb {
+  width: 100%;
+  aspect-ratio: 16/10;
+  background: #e8e8ec;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.card-thumb img {
+  width: 100%; height: 100%;
+  object-fit: cover; display: block;
+  transition: transform .35s ease;
+}
+.product-card:hover .card-thumb img { transform: scale(1.04); }
+.thumb-placeholder {
+  width: 100%; height: 100%;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 8px; color: var(--muted); font-size: 14px;
+  text-align: center; padding: 16px;
+}
+.thumb-placeholder svg { opacity: .35; }
+.thumb-placeholder span { font-size: 13px; line-height: 1.4; }
+
+/* badge */
+.card-badge {
+  position: absolute; top: 10px; left: 10px;
+  background: var(--accent);
+  color: var(--dark);
+  font-size: 12px; font-weight: 500;
+  padding: 3px 8px; border-radius: 4px;
+  letter-spacing: 0.5px; text-transform: uppercase;
+}
+.card-badge.purple { background: var(--purple); color: #fff; }
+
+/* card body */
+.card-body { padding: 18px 18px 20px; display: flex; flex-direction: column; flex: 1; }
+.card-format {
+  font-size: 12px; font-weight: 500;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 6px;
+}
+.card-title {
+  font-family: 'Polysans','DM Sans',sans-serif;
+  font-size: 17px; line-height: 1.35;
+  color: var(--dark); margin-bottom: 14px;
+  flex: 1;
+}
+.card-footer {
+  display: flex; align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+}
+.card-price { font-size: 18px; font-weight: 500; color: var(--dark); }
+.card-price .original {
+  font-size: 14px; color: var(--muted);
+  text-decoration: line-through; margin-left: 6px; font-weight: 400;
+}
+.card-price.free-price {
+  color: var(--purple); font-weight: 500;
+  font-family: 'Polysans','DM Sans',sans-serif;
+}
+.card-arrow {
+  width: 32px; height: 32px; border-radius: 6px;
+  border: 1px solid var(--border2);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--muted); font-size: 16px;
+  transition: all .2s;
+}
+.product-card:hover .card-arrow {
+  background: var(--dark); border-color: var(--dark);
+  color: #f0f0f0;
+}
+
+/* ===== SECTION DIVIDER ===== */
+.s-divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 0 40px;
+}
+
+/* ===== KELAS GRID ===== */
+.kelas-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+
+/* ===== MENTORING ===== */
+.mentoring-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.mentoring-card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 32px;
+  transition: border-color .2s, box-shadow .2s;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+.mentoring-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0;
+  width: 3px; height: 100%;
+  background: var(--border2);
+  transition: background .2s;
+}
+.mentoring-card:hover::before { background: var(--purple); }
+.mentoring-card:hover { box-shadow: 0 8px 24px rgba(36,36,44,0.08); }
+.mentoring-card.highlight {
+  background: var(--dark);
+  border-color: var(--dark);
+}
+.mentoring-card.highlight::before { background: var(--yellow); }
+.m-format {
+  font-size: 12px; font-weight: 500;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 12px;
+}
+.mentoring-card.highlight .m-format { color: rgba(240,240,240,0.55); }
+.m-price {
+  font-family: 'Polysans','DM Sans',sans-serif;
+  font-size: 38px; color: var(--purple);
+  line-height: 1; margin-bottom: 8px;
+  letter-spacing: -1px;
+}
+.mentoring-card.highlight .m-price { color: var(--accent); }
+.m-title {
+  font-family: 'Polysans','DM Sans',sans-serif;
+  font-size: 19px; color: var(--dark);
+  margin-bottom: 10px; line-height: 1.3;
+}
+.mentoring-card.highlight .m-title { color: #f0f0f0; }
+.m-desc { font-size: 15px; color: var(--muted); line-height: 1.65; margin-bottom: 28px; }
+.mentoring-card.highlight .m-desc { color: rgba(240,240,240,0.6); }
+.btn-outline {
+  display: inline-flex; align-items: center; gap: 6px;
+  border: 1px solid var(--border2);
+  color: var(--dark);
+  padding: 11px 22px; border-radius: 6px;
+  font-size: 15px; font-weight: 400;
+  text-decoration: none; transition: all .2s;
+  cursor: pointer; background: transparent;
+  font-family: var(--sans);
+}
+.btn-outline:hover { background: var(--dark); border-color: var(--dark); color: var(--yellow); }
+.mentoring-card.highlight .btn-outline {
+  background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2); color: #f0f0f0;
+}
+.mentoring-card.highlight .btn-outline:hover { background: var(--yellow); border-color: var(--yellow); color: var(--dark); }
+
+/* ===== TESTIMONIAL ===== */
+.testi-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; }
+.testi-card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px;
+}
+.testi-stars { color: var(--accent); font-size: 16px; margin-bottom: 12px; letter-spacing: 2px; }
+.testi-text { font-size: 15px; color: var(--muted); line-height: 1.7; margin-bottom: 18px; }
+.testi-author { display: flex; align-items: center; gap: 10px; }
+.testi-avatar {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: #e8e8ec; border: 1px solid var(--border2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px; color: var(--muted); flex-shrink: 0;
+}
+.testi-name { font-size: 15px; font-weight: 500; color: var(--dark); }
+.testi-role { font-size: 13px; color: var(--muted); }
+
+/* ===== CTA FOOTER ===== */
+.cta-wrap { padding: 0 40px 80px; max-width: 1100px; margin: 0 auto; }
+.cta-block {
+  background: var(--dark);
+  border-radius: 16px;
+  padding: 72px 60px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.cta-block::before {
+  content: '';
+  position: absolute; top: -60px; right: -60px;
+  width: 240px; height: 240px; border-radius: 50%;
+  background: rgba(135,38,202,0.18);
+  pointer-events: none;
+}
+.cta-block h2 {
+  font-family: 'Polysans','DM Sans',sans-serif;
+  font-size: 46px; line-height: 1.1;
+  letter-spacing: -1.5px;
+  color: #f0f0f0;
+  margin-bottom: 12px;
+}
+.cta-block h2 em { color: var(--accent); font-style: normal; }
+.cta-block p { font-size: 16px; color: rgba(240,240,240,0.6); margin-bottom: 36px; }
+.btn-dark {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--yellow);
+  color: var(--dark);
+  padding: 16px 34px;
+  border-radius: 6px;
+  font-size: 17px; font-weight: 500;
+  text-decoration: none;
+  transition: opacity .2s; cursor: pointer;
+}
+.btn-dark:hover { opacity: .85; }
+
+/* ===== FOOTER ===== */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 32px 40px;
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer-logo {
+  font-family: 'Polysans','DM Sans',sans-serif;
+  font-size: 18px; color: var(--dark);
+  display: flex; align-items: center; gap: 8px;
+}
+.footer-logo span { width: 6px; height: 6px; background: var(--purple); border-radius: 50%; display: inline-block; }
+footer p { font-size: 14px; color: var(--muted); }
+.footer-icons { display: flex; gap: 6px; align-items: center; }
+.footer-icon {
+  width: 36px; height: 36px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 8px;
+  border: 1px solid var(--border2);
+  color: var(--muted);
+  text-decoration: none;
+  transition: all .18s;
+  background: var(--bg2);
+}
+.footer-icon svg { width: 16px; height: 16px; }
+.footer-icon:hover { background: var(--dark); color: #f0f0f0; border-color: var(--dark); }
+
+/* ===== SPEAKER ===== */
+.speaker-photos {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-bottom: 48px;
+}
+.speaker-photo-wrap {
+  aspect-ratio: 3/4;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #e8e8ec;
+  border: 1px solid var(--border);
+  position: relative;
+}
+.speaker-photo-wrap img {
+  width: 100%; height: 100%;
+  object-fit: cover; display: block;
+  transition: transform .35s ease;
+}
+.speaker-photo-wrap:hover img { transform: scale(1.04); }
+.speaker-photo-placeholder {
+  width: 100%; height: 100%;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 8px; color: var(--muted); font-size: 13px;
+  text-align: center; padding: 16px;
+}
+.speaker-photo-placeholder svg { opacity: .3; }
+
+.speaker-logos-label {
+  font-size: 13px; font-weight: 500;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 20px;
+}
+.speaker-logos {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 12px;
+  margin-bottom: 40px;
+  align-items: center;
+}
+.logo-slot {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px 20px;
+  display: flex; align-items: center; justify-content: center;
+  min-height: 72px;
+  transition: border-color .2s;
+}
+.logo-slot:hover { border-color: var(--border2); }
+.logo-slot img {
+  max-width: 100%; max-height: 40px;
+  object-fit: contain; display: block;
+  filter: grayscale(100%);
+  opacity: 0.6;
+  transition: all .2s;
+}
+.logo-slot:hover img { filter: grayscale(0%); opacity: 1; }
+.logo-placeholder {
+  display: flex; align-items: center; justify-content: center;
+  width: 100%; height: 100%;
+}
+.logo-placeholder span {
+  font-size: 13px; color: var(--muted);
+  font-weight: 500;
+}
+
+.speaker-cta {
+  display: flex; align-items: center;
+  justify-content: space-between; gap: 24px;
+  background: var(--bg2);
+  border: 1px solid var(--border2);
+  border-left: 4px solid var(--purple);
+  border-radius: 12px;
+  padding: 24px 32px;
+}
+.speaker-cta-text strong {
+  display: block;
+  font-family: 'Polysans', system-ui, sans-serif;
+  font-size: 18px; color: var(--dark); margin-bottom: 4px;
+}
+.speaker-cta-text span { font-size: 15px; color: var(--muted); }
+
+.btn-whatsapp {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: #25D366;
+  color: #fff;
+  padding: 13px 26px;
+  border-radius: 8px;
+  font-size: 16px; font-weight: 500;
+  white-space: nowrap; flex-shrink: 0;
+  text-decoration: none;
+  transition: background .2s;
+  cursor: pointer;
+  border: none;
+}
+.btn-whatsapp:hover { background: #1ebe5d; }
+.btn-whatsapp svg { width: 20px; height: 20px; flex-shrink: 0; }
+
+@media (max-width: 768px) {
+  .speaker-photos { grid-template-columns: repeat(2, 1fr); }
+  .speaker-logos { grid-template-columns: repeat(3, 1fr); }
+  .speaker-cta { flex-direction: column; align-items: flex-start; padding: 24px; }
+}
+@media (max-width: 480px) {
+  .speaker-logos { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ===== ABOUT ===== */
+.about-block {
+  display: flex;
+  gap: 48px;
+  align-items: flex-start;
+}
+.about-left { flex-shrink: 0; }
+.about-photo-wrap {
+  width: 96px; height: 96px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid var(--border2);
+  background: #e8e8ec;
+  display: flex; align-items: center; justify-content: center;
+}
+.about-photo-wrap img {
+  width: 100%; height: 100%;
+  object-fit: cover; display: block;
+}
+.about-photo-placeholder {
+  width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--muted);
+}
+.about-name {
+  font-family: 'Polysans', system-ui, sans-serif;
+  font-size: 26px; color: var(--dark);
+  letter-spacing: -0.5px; line-height: 1.1;
+  margin-bottom: 6px;
+}
+.about-role {
+  font-size: 14px; color: var(--purple);
+  font-weight: 500; margin-bottom: 16px;
+  letter-spacing: 0.1px;
+}
+.about-bio {
+  font-size: 16px; color: var(--muted);
+  line-height: 1.75; max-width: 560px;
+  margin-bottom: 28px;
+}
+.about-socials {
+  display: flex; flex-wrap: wrap; gap: 10px;
+}
+.social-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  border: 1px solid var(--border2);
+  background: var(--bg2);
+  color: var(--dark);
+  padding: 9px 16px; border-radius: 8px;
+  font-size: 14px; font-weight: 400;
+  text-decoration: none;
+  transition: all .18s;
+}
+.social-btn svg { width: 18px; height: 18px; flex-shrink: 0; }
+.social-btn:hover {
+  background: var(--dark); color: #f0f0f0;
+  border-color: var(--dark);
+}
+@media (max-width: 600px) {
+  .about-block { flex-direction: column; gap: 24px; }
+  .social-btn span { display: none; }
+  .social-btn { padding: 10px; border-radius: 8px; }
+  .about-socials { gap: 8px; }
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-up { animation: fadeUp .55s ease both; }
+.delay-1 { animation-delay: .08s; }
+.delay-2 { animation-delay: .16s; }
+.delay-3 { animation-delay: .24s; }
+.delay-4 { animation-delay: .32s; }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  nav { padding: 0 20px; }
+  .nav-links { display: none; }
+  .stats-strip { padding: 20px; flex-wrap: wrap; gap: 16px; }
+  .stat-item { border-right: none; padding: 0; flex: 1 1 40%; }
+  .section-wrap { padding: 48px 20px; }
+  .lead-wrap { padding: 24px 20px 48px; }
+  .lead-banner { flex-direction: column; align-items: flex-start; gap: 20px; padding: 24px; }
+  .product-grid { grid-template-columns: 1fr 1fr; }  .kelas-grid { grid-template-columns: 1fr; }
+  .mentoring-grid { grid-template-columns: 1fr; }
+  .testi-grid { grid-template-columns: 1fr; }
+  .cta-wrap { padding: 0 20px 60px; }
+  .cta-block { padding: 48px 28px; }
+  .cta-block h2 { font-size: 32px; }
+  .s-divider { margin: 0 20px; }
+  footer { flex-direction: column; gap: 16px; text-align: center; padding: 28px 20px; }
+}
+@media (max-width: 480px) {
+  .product-grid { grid-template-columns: 1fr; }
+  .section-title { font-size: 30px; }
+}
+</style>
 </head>
-<body class="bg-[#0a0a0a] text-gray-100">
+<body>
 
-    <!-- Navigation -->
-    <nav class="fixed w-full z-50 top-0 left-0 bg-[#0a0a0a]/80 backdrop-blur-md border-b border-white/10">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-20 items-center">
-                <div class="flex-shrink-0 flex items-center">
-                    <span class="text-2xl font-bold tracking-tighter text-gradient">IKSAN BANGSAWAN</span>
-                </div>
-                <div class="hidden md:flex space-x-8 items-center">
-                    <a href="#perjalanan" class="nav-link text-sm font-medium hover:text-amber-400 transition">Perjalanan</a>
-                    <a href="#bisnis" class="nav-link text-sm font-medium hover:text-amber-400 transition">Bisnis</a>
-                    <a href="#skill" class="nav-link text-sm font-medium hover:text-amber-400 transition">Keahlian</a>
-                    <a href="https://lynk.id/iksan" class="nav-link text-sm font-medium hover:text-amber-400 transition">Produk Digital</a>
-                     <a href="https://lynk.id/iksan" class="nav-link text-sm font-medium hover:text-amber-400 transition">Program</a>
-                    <a href="https://wa.me/message/B2PEBBW7CWPJE1" target="_blank" class="bg-gradient-gold text-black px-6 py-2.5 rounded-full font-bold text-sm hover:opacity-90 transition shadow-lg shadow-amber-500/20">
-                        Konsultasi Sekarang
-                    </a>
-                </div>
-                <div class="md:hidden flex items-center">
-                    <button class="text-gray-400 hover:text-white">
-                        <i class="fa-solid fa-bars text-2xl"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </nav>
+<!-- ===== NAV ===== -->
+<nav>
+  <div class="nav-logo">Iksan Bangsawan <span></span></div>
+  <ul class="nav-links">
+    <li><a href="#produk">Produk</a></li>
+    <li><a href="#kelas">Kelas</a></li>
+    <li><a href="#mentoring">Mentoring</a></li>
+    <li><a href="#tentang">Profil</a></li>
+    <li><a href="https://wa.me/6285399644464" target="_blank" class="nav-wa">
+      <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
+      </svg>
+      Kontak
+    </a></li>
+    <li><a href="#lead" class="nav-cta">Join Grup</a></li>
+  </ul>
+</nav>
 
-    <!-- Hero Section -->
-    <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden hero-pattern">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="grid lg:grid-cols-2 gap-12 items-center">
-                <div>
-                    <div class="inline-flex items-center px-4 py-1.5 rounded-full border border-amber-500/30 bg-amber-500/10 text-amber-400 text-xs font-semibold mb-6 tracking-wider uppercase">
-                        Professional Mentor & Consultant for Branding, Marketing & Selling
-                    </div>
-                    <h1 class="text-5xl lg:text-7xl font-extrabold leading-tight mb-6">
-                        Hola 👋🏻 Mari Terhubung<span class="text-gradient"><br>Salam Kenal, Saya Iksan</span>
-                    </h1>
-                    <p class="text-gray-400 text-lg mb-8 leading-relaxed max-w-xl">
-                    Saya seorang Entrepreneur & Mentor Personal Brand yang Membantu entrepreneur dan profesional lainnya membangun persona yang relevan, dipercaya, dan menghasilkan revenue melalui strategi konten yang tepat sasaran.
-                    </p>
-                    <div class="flex flex-col sm:flex-row gap-4">
-                        <a href="https://wa.me/message/B2PEBBW7CWPJE1" class="px-8 py-4 bg-gradient-gold text-black rounded-xl font-bold text-center hover:scale-105 transition-transform">
-                            Hubungi Iksan (Admin)
-                        </a>
-                        <a href="#bisnis" class="px-8 py-4 bg-white/5 border border-white/10 rounded-xl font-bold text-center hover:bg-white/10 transition">
-                            Lihat Portfolio Bisnis
-                        </a>
-                    </div>
-                    
-                    <div class="mt-12 flex items-center gap-6">
-                        <div class="flex -space-x-3">
-                            <div class="w-10 h-10 rounded-full border-2 border-[#0a0a0a] bg-gray-800 flex items-center justify-center text-xs font-bold text-amber-400">IB</div>
-                            <div class="w-10 h-10 rounded-full border-2 border-[#0a0a0a] bg-gray-700 flex items-center justify-center text-xs font-bold text-amber-300">SK</div>
-                            <div class="w-10 h-10 rounded-full border-2 border-[#0a0a0a] bg-gray-600 flex items-center justify-center text-xs font-bold text-amber-200">BT</div>
-                        </div>
-                        <p class="text-sm text-gray-500">Mentoring sudah berjalan hingga <span class="text-white font-semibold">Batch ke-14</span></p>
-                    </div>
-                </div>
-                <div class="relative">
-                    <div class="absolute -top-20 -right-20 w-80 h-80 bg-amber-500/10 rounded-full blur-[100px]"></div>
-                    <div class="relative rounded-3xl overflow-hidden border border-white/10 aspect-[4/5] bg-gray-900 group">
-                        <!-- Placeholder for User Image -->
-                        <div class="absolute inset-0 flex items-center justify-center bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent z-10"></div>
-                        <div class="absolute inset-0 flex items-center justify-center text-gray-500 italic p-12 text-center">
-                            <img src='https://i.ibb.co.com/HDDfX4dX/foto-head-iksan.jpg'></img>
-                        </div>
-                        <div class="absolute bottom-8 left-8 right-8 z-20 glass-card p-4 rounded-2xl">
-                            <div class="flex justify-between items-center">
-                                <div>
-                                    <p class="text-xs text-amber-400 font-bold uppercase tracking-widest">Followers Total</p>
-                                    <p class="text-2xl font-bold">358.000+</p>
-                                </div>
-                                <div class="flex gap-3 text-xl">
-                                    <i class="fa-brands fa-instagram text-pink-500"></i>
-                                    <i class="fa-brands fa-tiktok text-white"></i>
-                                    <i class="fa-brands fa-youtube text-red-600"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- ===== LEAD MAGNET ===== -->
+<div class="lead-wrap" id="lead">
+  <div class="lead-banner">
+    <div class="lead-left">
+      <div class="lead-icon">📄</div>
+      <div class="lead-text">
+        <strong>Konten Tanpa Batas <span class="free-tag">Gratis</span></strong>
+        <span>Pelajari cara transformasi hidup melalui konten. Mulai membuka peluang rejeki, cara menghasilkan uang, menemukan ide konten.</span>
+      </div>
+    </div>
+    <a href="#" class="btn-accent">Akses video gratis →</a>
+  </div>
+</div>
 
-    <!-- Social Proof / Brands -->
-    <div class="border-y border-white/5 bg-white/[0.02] py-12">
-        <div class="max-w-7xl mx-auto px-4">
-            <p class="text-center text-gray-500 text-sm font-semibold uppercase tracking-[0.2em] mb-8">Telah Berkolaborasi Dengan Brand Ternama</p>
-            <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-50 grayscale hover:grayscale-0 transition duration-500">
-                <span class="text-xl font-bold">GOOGLE</span>
-                <span class="text-xl font-bold">SPOTIFY</span>
-                <span class="text-xl font-bold">PHILIPS</span>
-                <span class="text-xl font-bold">GOTRADE</span>
-                <span class="text-xl font-bold">TELKOMSEL</span>
-                <span class="text-xl font-bold">BANK INDONESIA</span>
-            </div>
+<hr class="s-divider">
+<!-- ===== ABOUT ===== -->
+<hr class="s-divider">
+<div class="section-wrap" id="tentang">
+  <div class="about-block">
+
+    <div class="about-left">
+      <!-- FOTO PROFIL — ganti src dengan foto kamu -->
+      <div class="about-photo-wrap">
+        <img src="https://i.ibb.co.com/rGg8Nk85/FOTO-PROFIL-IKSAN-2022-LATER.png" alt="Foto profil"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="about-photo-placeholder">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+            <circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+          </svg>
         </div>
+      </div>
     </div>
 
-    <!-- About / Journey -->
-    <section id="perjalanan" class="py-24 bg-[#0a0a0a]">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid lg:grid-cols-2 gap-16 items-start">
-                <div class="sticky top-32">
-                    <h2 class="text-3xl lg:text-5xl font-bold mb-6">Cerita Singkat <br/><span class="text-gradient">Iksan Bangsawan</span></h2>
-                    <p class="text-gray-400 leading-relaxed mb-6 italic">
-                        "Terima kasih sudah berkunjung ke halaman profile saya yang bukan siapa-siapa ini."
-                    </p>
-                    <p class="text-gray-300 leading-relaxed mb-6">
-                        Lulusan Teknik yang 'salah jurusan' namun menemukan passion di dunia kreatif sejak 2008. Mulai dari desain grafis hingga Augmented Reality, saya percaya kreativitas adalah pintu rezeki yang luas.
-                    </p>
-                    <div class="grid grid-cols-2 gap-6 mt-8">
-                        <div class="p-4 border-l-2 border-amber-500">
-                            <h4 class="text-2xl font-bold">2008</h4>
-                            <p class="text-xs text-gray-500 uppercase font-bold tracking-wider">Awal Mula Konten</p>
-                        </div>
-                        <div class="p-4 border-l-2 border-amber-500">
-                            <h4 class="text-2xl font-bold">350rb+</h4>
-                            <p class="text-xs text-gray-500 uppercase font-bold tracking-wider">Followers (6 Bulan)</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="space-y-8">
-                    <div class="glass-card p-8 rounded-3xl">
-                        <div class="w-12 h-12 bg-amber-500/10 rounded-xl flex items-center justify-center text-amber-500 mb-6">
-                            <i class="fa-solid fa-rocket text-xl"></i>
-                        </div>
-                        <h3 class="text-xl font-bold mb-3">Visi Utama</h3>
-                        <p class="text-gray-400">Membantu lebih banyak orang untuk menemukan potensi kreatifnya, membangun personal branding yang kuat, dan menjadi pebisnis yang relevan di era digital.</p>
-                    </div>
-                    
-                    <div class="glass-card p-8 rounded-3xl">
-                        <div class="w-12 h-12 bg-blue-500/10 rounded-xl flex items-center justify-center text-blue-500 mb-6">
-                            <i class="fa-solid fa-microphone text-xl"></i>
-                        </div>
-                        <h3 class="text-xl font-bold mb-3">Aktivitas & Peran</h3>
-                        <ul class="space-y-3 text-gray-400">
-                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-amber-500 text-xs"></i> <span><b>Content Creator</b> - Berbagi ide kreatif.</span></li>
-                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-amber-500 text-xs"></i> <span><b>Creativepreneur</b> - Hobi menjadi penghasilan.</span></li>
-                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-amber-500 text-xs"></i> <span><b>Mentor</b> - Program Mentoring Batch 11.</span></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+    <div class="about-right">
+      <div class="section-label" style="margin-bottom:6px">Salam kenal, mari terhubung ...</div>
+      <!-- NAMA & PROFESI — ganti sesuai milikmu -->
+      <h2 class="about-name">Iksan Bangsawan</h2>
+      <p class="about-role">Entrepreneur ⋅ Creator ⋅ Mentor ⋅ Speaker</p>
+
+      <!-- BIOGRAFI — ganti dengan bio singkatmu -->
+      <p class="about-bio">Saya bantu orang untuk menemukan personal branding yang kuat, dan menjadi pebisnis yang relevan di era digital.</p>
+
+      <!-- SOSMED — ganti href masing-masing -->
+      <div class="about-socials">
+
+        <!-- Instagram -->
+        <a href="https://instagram.com/usernamemu" target="_blank" class="social-btn" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5"/>
+            <circle cx="12" cy="12" r="4.5"/>
+            <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+          </svg>
+          <span>Instagram</span>
+        </a>
+
+        <!-- Threads -->
+        <a href="https://threads.net/@iksanbangsawan" target="_blank" class="social-btn" aria-label="Threads">
+          <svg viewBox="0 0 192 192" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M141.537 88.9883C140.71 88.5919 139.87 88.2104 139.019 87.8451C137.537 60.5382 122.616 44.905 97.5619 44.745C97.4484 44.7443 97.3355 44.7443 97.222 44.7443C82.2364 44.7443 69.7731 51.1409 62.102 62.7807L75.881 72.2328C81.6116 63.5383 90.6052 61.6848 97.2286 61.6848C97.3051 61.6848 97.3819 61.6848 97.4576 61.6855C105.707 61.7381 111.932 64.1366 115.961 68.814C118.893 72.2193 120.854 76.925 121.825 82.8638C114.511 81.6207 106.601 81.2385 98.145 81.7233C74.3247 83.0954 59.0111 96.9879 60.0396 116.292C60.5615 126.084 65.4397 134.508 73.775 140.011C80.8224 144.663 89.899 146.938 99.3323 146.423C111.79 145.74 121.563 140.987 128.381 132.296C133.559 125.696 136.834 117.143 138.28 106.366C144.217 109.949 148.617 114.664 151.047 120.332C155.179 129.967 155.42 145.8 142.501 158.708C131.182 170.016 117.576 174.908 97.0135 175.059C74.2042 174.89 56.9538 167.575 45.7381 153.317C35.2355 139.966 29.8077 120.682 29.6052 96C29.8077 71.3178 35.2355 52.0336 45.7381 38.6827C56.9538 24.4249 74.2039 17.11 97.0135 16.9405C119.988 17.1113 137.539 24.4614 149.184 38.788C154.894 45.8136 159.199 54.6488 162.037 64.9503L178.184 60.6422C174.744 47.9622 169.331 37.0357 161.965 27.974C147.036 9.60668 125.202 0.195148 97.0695 0H96.9569C68.8816 0.19447 47.2921 9.6418 32.7883 28.0282C19.8819 44.4864 13.2244 67.3157 13.0007 95.9325L13 96L13.0007 96.0675C13.2244 124.684 19.8819 147.514 32.7883 163.972C47.2921 182.358 68.8816 191.806 96.9569 192H97.0695C122.03 191.827 139.624 185.292 154.118 170.811C173.081 151.866 172.51 128.119 166.26 113.541C161.776 103.087 153.227 94.5962 141.537 88.9883ZM98.4405 129.507C88.0005 130.095 77.1544 125.409 76.6196 115.372C76.2232 107.93 81.9158 99.626 99.0812 98.6368C101.047 98.5234 102.976 98.468 104.871 98.468C111.106 98.468 116.939 99.0737 122.242 100.233C120.264 124.935 108.662 128.946 98.4405 129.507Z"/>
+          </svg>
+          <span>Threads</span>
+        </a>
+
+        <!-- TikTok -->
+        <a href="https://tiktok.com/@iksanbangsawan" target="_blank" class="social-btn" aria-label="TikTok">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.75a4.85 4.85 0 0 1-1.01-.06z"/>
+          </svg>
+          <span>TikTok</span>
+        </a>
+
+        <!-- YouTube -->
+        <a href="https://youtube.com/@iksanbangsawan" target="_blank" class="social-btn" aria-label="YouTube">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+          </svg>
+          <span>YouTube</span>
+        </a>
+
+        <!-- WhatsApp -->
+        <a href="https://wa.me/6285399644464" target="_blank" class="social-btn" aria-label="WhatsApp">
+      <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
+          </svg>
+          <span>WhatsApp</span>
+        </a>
+
+        <!-- Email -->
+        <a href="mailto:iksanbangsawan@gmail.com" class="social-btn" aria-label="Email">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="4" width="20" height="16" rx="2"/>
+            <path d="M2 7l10 7 10-7"/>
+          </svg>
+          <span>Email</span>
+        </a>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<hr class="s-divider">
+<!-- ===== SPEAKER ===== -->
+<hr class="s-divider">
+<div class="section-wrap" id="speaking">
+  <div class="section-label">PEGANG-PEGANG MIC</div>
+  <h2 class="section-title">Pembicara Profesional</h2>
+  <p class="section-sub">Topik: Content Creator, Personal Branding, Digital Marketing, Entrepreneur</p>
+
+  <!-- FOTO ON-STAGE — tambah/kurang sesuai jumlah foto yang kamu punya -->
+  <div class="speaker-photos">
+
+    <div class="speaker-photo-wrap">
+      <!-- Ganti src dengan foto pembicaramu -->
+      <img src="https://i.ibb.co.com/bnJxbJk/pembicara-di-ciputra.jpg" alt="Iksan berbicara di event"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="speaker-photo-placeholder">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+        <span>Foto speaking 1</span>
+      </div>
+    </div>
+
+    <div class="speaker-photo-wrap">
+      <img src="https://i.ibb.co.com/HT8jrPrP/pembicara.jpg" alt="Iksan berbicara di event"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="speaker-photo-placeholder">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+        <span>Foto speaking 2</span>
+      </div>
+    </div>
+
+    <div class="speaker-photo-wrap">
+      <img src="YOUR_SPEAKING_PHOTO_3.jpg" alt="Iksan berbicara di event"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="speaker-photo-placeholder">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+        <span>Foto speaking 3</span>
+      </div>
+    </div>
+
+    <div class="speaker-photo-wrap">
+      <img src="YOUR_SPEAKING_PHOTO_4.jpg" alt="Iksan berbicara di event"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="speaker-photo-placeholder">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+        <span>Foto speaking 4</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- LOGO KLIEN -->
+  <p class="speaker-logos-label">Pernah diundang oleh</p>
+  <div class="speaker-logos">
+
+    <!-- Ganti src dengan logo perusahaan. Usahakan format PNG transparan -->
+    <div class="logo-slot">
+      <img src="YOUR_LOGO_1.png" alt="Nama perusahaan 1"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="logo-placeholder"><span>Logo 1</span></div>
+    </div>
+
+    <div class="logo-slot">
+      <img src="YOUR_LOGO_2.png" alt="Nama perusahaan 2"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="logo-placeholder"><span>Logo 2</span></div>
+    </div>
+
+    <div class="logo-slot">
+      <img src="YOUR_LOGO_3.png" alt="Nama perusahaan 3"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="logo-placeholder"><span>Logo 3</span></div>
+    </div>
+
+    <div class="logo-slot">
+      <img src="YOUR_LOGO_4.png" alt="Nama perusahaan 4"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="logo-placeholder"><span>Logo 4</span></div>
+    </div>
+
+    <div class="logo-slot">
+      <img src="YOUR_LOGO_5.png" alt="Nama perusahaan 5"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="logo-placeholder"><span>Logo 5</span></div>
+    </div>
+
+    <div class="logo-slot">
+      <img src="YOUR_LOGO_6.png" alt="Nama perusahaan 6"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="logo-placeholder"><span>Logo 6</span></div>
+    </div>
+
+  </div>
+
+  <!-- CTA SPEAKING -->
+  <div class="speaker-cta">
+    <div class="speaker-cta-text">
+      <strong>Tertarik mengundang saya juga?</strong>
+      <span>Hubungi langsung untuk ketersediaan, topik, dan detail lainnya.</span>
+    </div>
+    <!-- Ganti nomor WA -->
+    <a href="https://wa.me/6285399644464?text=Halo saya atas nama _____________, mau bekerjasama dengan Iksan Bangsawan untuk:%0APembicara acara,%0AEndorse brand,%0Aatau Mentoring konsultasi"
+       target="_blank" class="btn-whatsapp">
+      <svg viewBox="0 0 24 24" fill="currentColor">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
+      </svg>
+      Hubungi via WhatsApp
+    </a>
+  </div>
+
+</div>
+
+<hr class="s-divider">
+<!-- ===== PRODUCTS ===== -->
+<hr class="s-divider">
+<div class="section-wrap" id="produk">
+  <div class="section-label">Produk digital</div>
+  <h2 class="section-title">Ebook &amp; Template</h2>
+  <p class="section-sub">Semua produk dibuat praktis — langsung bisa dipakai.</p>
+
+  <div class="cat-tabs">
+    <button class="tab active" data-filter="all">Semua</button>
+    <button class="tab" data-filter="pb">Personal Branding</button>
+    <button class="tab" data-filter="kreator">Konten Kreator</button>
+    <button class="tab" data-filter="bisnis">Bisnis & Keuangan</button>
+  </div>
+
+  <div class="product-grid">
+
+    <!-- ============================================================ -->
+    <!-- CONTOH LENGKAP — gambar, link, dan teks sudah diisi         -->
+    <!-- Ikuti pola ini untuk semua kartu lainnya                    -->
+    <!-- ============================================================ -->
+    <div class="product-card" data-cat="pb">
+      <div class="card-thumb">
+        <!-- GAMBAR PRODUK
+             Cara 1: Taruh file gambar di folder yang sama → src="nama-file.jpg"
+             Cara 2: Pakai URL dari internet → src="https://..."
+             Cara 3: Pakai hasil upload Notion/Drive → src="https://..." -->
+        <img src="https://images.unsplash.com/photo-1512314889357-e157c22f938d?w=600&q=80"
+             alt="Playbook Personal Branding">
+        <!-- Bagian ini hanya muncul kalau gambar gagal dimuat — boleh dibiarkan -->
+        <div class="thumb-placeholder" style="display:none">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+          <span>Gambar gagal dimuat</span>
         </div>
-    </section>
-
-    <!-- Business Portfolio -->
-    <section id="bisnis" class="py-24 bg-white/[0.01]">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-16">
-            <h2 class="text-3xl lg:text-5xl font-bold mb-4">Bisnis yang Saya Bangun</h2>
-            <p class="text-gray-400 max-w-2xl mx-auto">Dari Agency hingga Properti, bukti nyata bahwa strategi branding bisa diimplementasikan ke berbagai sektor industri.</p>
+      </div>
+      <!-- LINK PRODUK — ganti href dengan link Lynk.id / Gumroad / dll -->
+      <a href="https://lynk.id/iksan/1kdzkl5djd2j" target="_blank" style="display:contents;text-decoration:none;color:inherit">
+        <div class="card-body">
+          <!-- FORMAT / TIPE PRODUK -->
+          <div class="card-format">PDF</div>
+          <!-- JUDUL PRODUK -->
+          <div class="card-title">Playbook Personal Branding</div>
+          <div class="card-footer">
+            <!-- HARGA -->
+            <div class="card-price">Rp59.000</div>
+            <div class="card-arrow">→</div>
+          </div>
         </div>
-        <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-3 gap-8">
-            <!-- Double Group -->
-            <div class="glass-card rounded-3xl overflow-hidden flex flex-col h-full group">
-                <div class="h-48 bg-gray-800 relative flex items-center justify-center">
-                    <span class="text-2xl font-bold tracking-widest text-white/20">Double Group</span>
-                    <div class="absolute bottom-4 left-4 bg-amber-500 text-black text-[10px] font-bold px-2 py-1 rounded uppercase">Creative Agency</div>
-                </div>
-                <div class="p-8 flex flex-col flex-grow">
-                    <h3 class="text-xl font-bold mb-2">PT. Double Group Berkah Bersama</h3>
-                    <p class="text-gray-500 text-sm mb-4">Jakarta & Makassar</p>
-                    <p class="text-gray-300 mb-6 flex-grow">Company Holding <span class="text-amber-400 font-bold">1000+ proyek</span> dengan tim yang kini berjumlah 30+ orang profesional.</p>
-                    <a href="https://doublegroup.co.id" class="inline-flex items-center gap-2 text-amber-400 font-bold hover:gap-4 transition-all">Lihat Website <i class="fa-solid fa-arrow-right text-xs"></i></a>
-                </div>
-            </div>
+      </a>
+    </div>
+    <!-- ============================================================ -->
 
-
-             <!-- Bisnity -->
-            <div class="glass-card rounded-3xl overflow-hidden flex flex-col h-full group">
-                <div class="h-48 bg-gray-800 relative flex items-center justify-center">
-                    <span class="text-2xl font-bold tracking-widest text-white/20">Bisnity</span>
-                    <div class="absolute bottom-4 left-4 bg-amber-500 text-black text-[10px] font-bold px-2 py-1 rounded uppercase">Creative Agency</div>
-                </div>
-                <div class="p-8 flex flex-col flex-grow">
-                    <h3 class="text-xl font-bold mb-2">PT. Bisnis dari Hati</h3>
-                    <p class="text-gray-500 text-sm mb-4">Indonesia</p>
-                    <p class="text-gray-300 mb-6 flex-grow">Business Owner Community <span class="text-amber-400 font-bold">1000+ proyek</span> program marketing, branding & selling</p>
-                    <a href="https://instgram.com/bisnity" class="inline-flex items-center gap-2 text-amber-400 font-bold hover:gap-4 transition-all">Lihat Website <i class="fa-solid fa-arrow-right text-xs"></i></a>
-                </div>
-            </div>
-
-             <!-- Skena Digital -->
-            <div class="glass-card rounded-3xl overflow-hidden flex flex-col h-full group">
-                <div class="h-48 bg-gray-800 relative flex items-center justify-center">
-                    <span class="text-2xl font-bold tracking-widest text-white/20">SKENA</span>
-                    <div class="absolute bottom-4 left-4 bg-amber-500 text-black text-[10px] font-bold px-2 py-1 rounded uppercase">Creative Agency</div>
-                </div>
-                <div class="p-8 flex flex-col flex-grow">
-                    <h3 class="text-xl font-bold mb-2">PT. SKENA Wahana Kreatif</h3>
-                    <p class="text-gray-500 text-sm mb-4">Jakarta & Makassar</p>
-                    <p class="text-gray-300 mb-6 flex-grow">Sudah mengerjakan <span class="text-amber-400 font-bold">400+ proyek</span> dengan tim yang kini berjumlah 30+ orang profesional.</p>
-                    <a href="#" class="inline-flex items-center gap-2 text-amber-400 font-bold hover:gap-4 transition-all">Lihat Website <i class="fa-solid fa-arrow-right text-xs"></i></a>
-                </div>
-            </div>
-
-            <!-- Bangsawan Travel -->
-            <div class="glass-card rounded-3xl overflow-hidden flex flex-col h-full group">
-                <div class="h-48 bg-gray-800 relative flex items-center justify-center">
-                    <span class="text-2xl font-bold tracking-widest text-white/20">TRAVEL</span>
-                    <div class="absolute bottom-4 left-4 bg-blue-500 text-white text-[10px] font-bold px-2 py-1 rounded uppercase">Spiritual Journey</div>
-                </div>
-                <div class="p-8 flex flex-col flex-grow">
-                    <h3 class="text-xl font-bold mb-2">PT. Bangsawan Cahaya Dunia</h3>
-                    <p class="text-gray-500 text-sm mb-4">Travel Umroh Eksklusif</p>
-                    <p class="text-gray-300 mb-6 flex-grow">Membantu jamaah beribadah dengan nyaman melalui layanan travel yang transparan dan amanah.</p>
-                    <a href="#" class="inline-flex items-center gap-2 text-amber-400 font-bold hover:gap-4 transition-all">Lihat Layanan <i class="fa-solid fa-arrow-right text-xs"></i></a>
-                </div>
-            </div>
-
-            <!-- Konstruka -->
-            <div class="glass-card rounded-3xl overflow-hidden flex flex-col h-full group">
-                <div class="h-48 bg-gray-800 relative flex items-center justify-center">
-                    <span class="text-2xl font-bold tracking-widest text-white/20">KONSTRUKA</span>
-                    <div class="absolute bottom-4 left-4 bg-emerald-500 text-black text-[10px] font-bold px-2 py-1 rounded uppercase">Civil & Interior</div>
-                </div>
-                <div class="p-8 flex flex-col flex-grow">
-                    <h3 class="text-xl font-bold mb-2">PT. Konstruka untuk Negeri</h3>
-                    <p class="text-gray-500 text-sm mb-4">Kontraktor & Interior</p>
-                    <p class="text-gray-300 mb-6 flex-grow">Bisnis kontraktor yang berfokus pada kualitas bangunan dan desain interior modern yang terus berkembang.</p>
-                    <a href="#" class="inline-flex items-center gap-2 text-amber-400 font-bold hover:gap-4 transition-all">Lihat Portfolio <i class="fa-solid fa-arrow-right text-xs"></i></a>
-                </div>
-            </div>
+    <!-- CARD: Worksheet PB -->
+    <div class="product-card" data-cat="pb">
+      <div class="card-thumb">
+        <img src="thumb-worksheet-pb.jpg" alt="Worksheet Personal Branding"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="thumb-placeholder">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+          <span>thumb-worksheet-pb.jpg</span>
         </div>
-    </section>
-
-    <!-- Skills & Expertise -->
-    <section id="skill" class="py-24">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="bg-gradient-gold p-[1px] rounded-[3rem]">
-                <div class="bg-[#0a0a0a] rounded-[3rem] p-8 lg:p-16">
-                    <div class="grid lg:grid-cols-2 gap-12 items-center">
-                        <div>
-                            <h2 class="text-4xl font-bold mb-6 text-gradient italic">Expertise & Masteries</h2>
-                            <p class="text-gray-400 mb-8">Kombinasi antara skill teknis dan manajerial yang saya bangun selama lebih dari satu dekade.</p>
-                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                <div class="flex items-center gap-3 p-4 bg-white/5 rounded-2xl border border-white/5">
-                                    <i class="fa-solid fa-video text-amber-500"></i>
-                                    <span class="text-sm font-semibold">Content Creation</span>
-                                </div>
-                                <div class="flex items-center gap-3 p-4 bg-white/5 rounded-2xl border border-white/5">
-                                    <i class="fa-solid fa-chart-line text-amber-500"></i>
-                                    <span class="text-sm font-semibold">Digital Marketing</span>
-                                </div>
-                                <div class="flex items-center gap-3 p-4 bg-white/5 rounded-2xl border border-white/5">
-                                    <i class="fa-solid fa-users-gear text-amber-500"></i>
-                                    <span class="text-sm font-semibold">Leadership</span>
-                                </div>
-                                <div class="flex items-center gap-3 p-4 bg-white/5 rounded-2xl border border-white/5">
-                                    <i class="fa-solid fa-box-open text-amber-500"></i>
-                                    <span class="text-sm font-semibold">Product Development</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="space-y-4">
-                            <div class="p-6 glass-card rounded-2xl border-l-4 border-amber-500">
-                                <h4 class="font-bold mb-1">Creative Business Dev</h4>
-                                <p class="text-xs text-gray-500">Membangun & mengelola lintas industri.</p>
-                            </div>
-                            <div class="p-6 glass-card rounded-2xl border-l-4 border-amber-500">
-                                <h4 class="font-bold mb-1">Personal Branding</h4>
-                                <p class="text-xs text-gray-500">Social media growth & content strategy.</p>
-                            </div>
-                            <div class="p-6 glass-card rounded-2xl border-l-4 border-amber-500">
-                                <h4 class="font-bold mb-1">Public Speaking</h4>
-                                <p class="text-xs text-gray-500">Mentor workshop & seminar nasional.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      </div>
+      <a href="https://lynk.id/iksan/m20wme0ex3dx" target="_blank" style="display:contents;text-decoration:none;color:inherit">
+        <div class="card-body">
+        <div class="card-format">Template Sheets</div>
+        <div class="card-title">Worksheet Personal Branding</div>
+        <div class="card-footer">
+          <div class="card-price">Rp99.000</div>
+          <div class="card-arrow">→</div>
         </div>
-    </section>
+      </div>
+      </a>
+    </div>
 
-    <!-- CTA Section -->
-    <section class="py-24 relative overflow-hidden">
-        <div class="absolute inset-0 bg-amber-500/10 blur-[150px] -z-10"></div>
-        <div class="max-w-4xl mx-auto px-4 text-center">
-            <h2 class="text-4xl lg:text-6xl font-extrabold mb-8">Siap Bertumbuh <br/> <span class="text-gradient">Melalui Personal Brand?</span></h2>
-            <p class="text-gray-400 text-lg mb-12">Jangan hanya jadi penonton di era digital. Mari bertransformasi menjadi versi terbaik melalui strategi branding dan mentoring yang terukur.</p>
-            
-            <div class="flex flex-col md:flex-row justify-center gap-6">
-                <a href="https://wa.me/message/B2PEBBW7CWPJE1" target="_blank" class="flex items-center justify-center gap-3 px-10 py-5 bg-gradient-gold text-black rounded-2xl font-bold text-lg hover:shadow-2xl hover:shadow-amber-500/40 transition-all">
-                    <i class="fa-brands fa-whatsapp text-2xl"></i>
-                    Hubungi Admin (WhatsApp)
-                </a>
-            </div>
-            
-            <div class="mt-16 pt-16 border-t border-white/10">
-                <p class="text-sm text-gray-500 uppercase tracking-widest font-bold mb-4">Temukan Produk Digital Saya</p>
-                <div class="flex justify-center gap-8">
-                    <a href="https://lynk.id/iksan" class="text-gray-400 hover:text-amber-500 transition font-bold uppercase text-xs tracking-tighter border-b border-transparent hover:border-amber-500 pb-1">Template Desain</a>
-                    <a href="https://lynk.id/iksan" class="text-gray-400 hover:text-amber-500 transition font-bold uppercase text-xs tracking-tighter border-b border-transparent hover:border-amber-500 pb-1">E-Book Branding</a>
-                    <a href="https://lynk.id/iksan" class="text-gray-400 hover:text-amber-500 transition font-bold uppercase text-xs tracking-tighter border-b border-transparent hover:border-amber-500 pb-1">Video Course</a>
-                </div>
-            </div>
+    <!-- CARD: Ebook Ide Konten -->
+    <div class="product-card" data-cat="pb kreator">
+      <div class="card-thumb">
+        <img src="thumb-ebook-ide-konten.jpg" alt="Ebook Ide Konten"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="thumb-placeholder">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+          <span>thumb-ebook-ide-konten.jpg</span>
         </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="py-12 border-t border-white/5">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
-                <div class="text-center md:text-left">
-                    <p class="text-xl font-bold text-gradient">IKSAN BANGSAWAN</p>
-                    <p class="text-xs text-gray-500 mt-1">Creativepreneur & Consultant</p>
-                </div>
-                <div class="flex gap-6 text-gray-400">
-                    <a href="https://instagram.com" class="hover:text-white transition"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="https://tiktok.com" class="hover:text-white transition"><i class="fa-brands fa-tiktok"></i></a>
-                    <a href="https://youtube.com" class="hover:text-white transition"><i class="fa-brands fa-youtube"></i></a>
-                    <a href="https://linkedin.com" class="hover:text-white transition"><i class="fa-brands fa-linkedin"></i></a>
-                </div>
-                <div class="text-xs text-gray-500 text-center md:text-right font-medium">
-                    &copy; 2024 Iksan Bangsawan. All rights reserved.<br/>
-                    Semoga Hidup Kalian Bertransformasi.
-                </div>
-            </div>
+      </div>
+      <a href="https://lynk.id/iksan/m9rpr9wql9ll" target="_blank" style="display:contents;text-decoration:none;color:inherit">
+        <div class="card-body">
+        <div class="card-format">PDF</div>
+        <div class="card-title">Ebook Menemukan Ide Konten</div>
+        <div class="card-footer">
+          <div class="card-price">Rp79.000</div>
+          <div class="card-arrow">→</div>
         </div>
-    </footer>
+      </div>
+      </a>
+    </div>
 
-    <script>
-        // Smooth scroll implementation for navigation
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-    </script>
+    <!-- CARD: Content Plan -->
+    <div class="product-card" data-cat="kreator">
+      <div class="card-thumb">
+        <img src="thumb-content-plan.jpg" alt="Template Content Plan"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="thumb-placeholder">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+          <span>thumb-content-plan.jpg</span>
+        </div>
+      </div>
+      <a href="https://lynk.id/iksan/67xv00525k7p" target="_blank" style="display:contents;text-decoration:none;color:inherit">
+        <div class="card-body">
+        <div class="card-format">Template Sheets</div>
+        <div class="card-title">Template Content Plan</div>
+        <div class="card-footer">
+          <div class="card-price">Rp19.000</div>
+          <div class="card-arrow">→</div>
+        </div>
+      </div>
+      </a>
+    </div>
+
+    <!-- CARD: Skrip TikTok -->
+    <div class="product-card" data-cat="kreator">
+      <div class="card-thumb">
+        <img src="thumb-skrip-tiktok.jpg" alt="Template Skrip TikTok & Reels"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="thumb-placeholder">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+          <span>thumb-skrip-tiktok.jpg</span>
+        </div>
+      </div>
+      <a href="https://lynk.id/iksan/dxd0qmqjvkz4" target="_blank" style="display:contents;text-decoration:none;color:inherit">
+        <div class="card-body">
+        <div class="card-format">Word · Sheets</div>
+        <div class="card-title">Template Skrip TikTok & Reels</div>
+        <div class="card-footer">
+          <div class="card-price">Rp49.000</div>
+          <div class="card-arrow">→</div>
+        </div>
+      </div>
+      </a>
+    </div>
+
+    <!-- CARD: Estimasi Modal (FEATURED) -->
+    <div class="product-card featured" data-cat="bisnis">
+      <div class="card-badge">Terlaris</div>
+      <div class="card-thumb">
+        <img src="thumb-estimasi-modal.jpg" alt="Estimasi Modal Bisnis"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="thumb-placeholder">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+          <span>thumb-estimasi-modal.jpg</span>
+        </div>
+      </div>
+      <a href="https://lynk.id/iksan/49zoRV3" target="_blank" style="display:contents;text-decoration:none;color:inherit">
+        <div class="card-body">
+        <div class="card-format">Sheets</div>
+        <div class="card-title">Template Estimasi Modal Bisnis & Balik Modal</div>
+        <div class="card-footer">
+          <div class="card-price">Rp99.000<span class="original">Rp150.000</span></div>
+          <div class="card-arrow">→</div>
+        </div>
+      </div>
+      </a>
+    </div>
+
+    <!-- CARD: HPP -->
+    <div class="product-card" data-cat="bisnis">
+      <div class="card-thumb">
+        <img src="thumb-hpp.jpg" alt="Template Rumus HPP"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="thumb-placeholder">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+          <span>thumb-hpp.jpg</span>
+        </div>
+      </div>
+      <a href="https://lynk.id/iksan/wpw233wxmn6r" target="_blank" style="display:contents;text-decoration:none;color:inherit">
+        <div class="card-body">
+        <div class="card-format">Sheets</div>
+        <div class="card-title">Template Rumus Harga Pokok Produksi (HPP)</div>
+        <div class="card-footer">
+          <div class="card-price">Rp99.000</div>
+          <div class="card-arrow">→</div>
+        </div>
+      </div>
+      </a>
+    </div>
+
+    <!-- CARD: Arus Kas -->
+    <div class="product-card" data-cat="bisnis">
+      <div class="card-thumb">
+        <img src="thumb-arus-kas.jpg" alt="Template Catatan Arus Kas"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="thumb-placeholder">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+          <span>thumb-arus-kas.jpg</span>
+        </div>
+      </div>
+      <a href="https://lynk.id/iksan/o3j1nn8rgwy3" target="_blank" style="display:contents;text-decoration:none;color:inherit">
+        <div class="card-body">
+        <div class="card-format">Sheets</div>
+        <div class="card-title">Template Catatan Arus Kas</div>
+        <div class="card-footer">
+          <div class="card-price">Rp99.000</div>
+          <div class="card-arrow">→</div>
+        </div>
+      </div>
+      </a>
+    </div>
+
+    <!-- CARD: Invoice + MoM -->
+    <div class="product-card" data-cat="bisnis">
+      <div class="card-thumb">
+        <img src="thumb-invoice-mom.jpg" alt="Template Invoice + Minutes of Meeting"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="thumb-placeholder">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+          <span>thumb-invoice-mom.jpg</span>
+        </div>
+      </div>
+      <a href="https://lynk.id/iksan/1xpzooo0e0dx" target="_blank" style="display:contents;text-decoration:none;color:inherit">
+        <div class="card-body">
+        <div class="card-format">Word · Sheets</div>
+        <div class="card-title">Template Invoice + Minutes of Meeting</div>
+        <div class="card-footer">
+          <div class="card-price">Rp19.000 /item</div>
+          <div class="card-arrow">→</div>
+        </div>
+      </div>
+      </a>
+    </div>
+
+    <!-- CARD: Surat Perjanjian -->
+    <div class="product-card" data-cat="bisnis">
+      <div class="card-thumb">
+        <img src="thumb-surat-perjanjian.jpg" alt="Surat Perjanjian Kerjasama"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="thumb-placeholder">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+          <span>thumb-surat-perjanjian.jpg</span>
+        </div>
+      </div>
+      <a href="https://lynk.id/iksan/gnde11zqer21" target="_blank" style="display:contents;text-decoration:none;color:inherit">
+        <div class="card-body">
+        <div class="card-format">Word</div>
+        <div class="card-title">Template Surat Perjanjian Kerjasama</div>
+        <div class="card-footer">
+          <div class="card-price">Rp39.000</div>
+          <div class="card-arrow">→</div>
+        </div>
+      </div>
+      </a>
+    </div>
+
+    <!-- CARD: Quotation -->
+    <div class="product-card" data-cat="bisnis">
+      <div class="card-thumb">
+        <img src="thumb-quotation.jpg" alt="Template Penawaran Quotation"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="thumb-placeholder">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+          <span>thumb-quotation.jpg</span>
+        </div>
+      </div>
+      <a href="https://lynk.id/iksan/qzxj00vjy2on" target="_blank" style="display:contents;text-decoration:none;color:inherit">
+        <div class="card-body">
+        <div class="card-format">Sheets</div>
+        <div class="card-title">Template Penawaran Quotation</div>
+        <div class="card-footer">
+          <div class="card-price">Rp29.000</div>
+          <div class="card-arrow">→</div>
+        </div>
+      </div>
+      </a>
+    </div>
+
+    <!-- CARD: Proposal Project FREE -->
+    <div class="product-card free-card" data-cat="bisnis">
+      <div class="card-badge purple">Gratis</div>
+      <div class="card-thumb">
+        <img src="thumb-proposal-project.jpg" alt="Template Proposal Project"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="thumb-placeholder">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+          <span>thumb-proposal-project.jpg</span>
+        </div>
+      </div>
+      <a href="https://lynk.id/iksan/j2dryn208010" target="_blank" style="display:contents;text-decoration:none;color:inherit">
+        <div class="card-body">
+        <div class="card-format">Word · PDF</div>
+        <div class="card-title">Template Proposal Project</div>
+        <div class="card-footer">
+          <div class="card-price free-price">Gratis</div>
+        </div>
+      </div>
+      </a>
+    </div>
+
+  </div>
+</div>
+
+<hr class="s-divider">
+<!-- ===== KELAS ===== -->
+<hr class="s-divider">
+<div class="section-wrap" id="kelas">
+  <div class="section-label">Kelas & Webinar</div>
+  <h2 class="section-title">Konsisten Bikin Konten</h2>
+  <p class="section-sub"></p>
+  <div class="kelas-grid">
+
+    <div class="product-card">
+      <div class="card-thumb">
+        <img src="thumb-latihan-konsisten.jpg" alt="Latihan Konsisten Ngonten"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="thumb-placeholder">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+          <span>thumb-latihan-konsisten.jpg</span>
+        </div>
+      </div>
+      <a href="https://lynk.id/iksan/2qw7j8jp6wy0" target="_blank" style="display:contents;text-decoration:none;color:inherit">
+        <div class="card-body">
+        <div class="card-format">Video + WA Group</div>
+        <div class="card-title">Latihan Konsisten Ngonten</div>
+        <div class="card-footer">
+          <div class="card-price">Rp145.000</div>
+          <div class="card-arrow">→</div>
+        </div>
+      </div>
+      </a>
+    </div>
+
+    <div class="product-card featured">
+      <div class="card-badge">Populer</div>
+      <div class="card-thumb">
+        <img src="thumb-webinar-7hari.jpg" alt="Webinar 7 Hari"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="thumb-placeholder">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+          <span>thumb-webinar-7hari.jpg</span>
+        </div>
+      </div>
+      <a href="http://lynk.id/iksan/7j1mo3d8lymq/checkout" target="_blank" style="display:contents;text-decoration:none;color:inherit">
+        <div class="card-body">
+        <div class="card-format">Zoom + WA Group</div>
+        <div class="card-title">Webinar Konsisten Ngonten 7 Hari</div>
+        <div class="card-footer">
+          <div class="card-price">Rp185.000</div>
+          <div class="card-arrow">→</div>
+        </div>
+      </div>
+      </a>
+    </div>
+
+    <div class="product-card">
+      <div class="card-thumb">
+        <img src="thumb-konten-tanpa-batas.jpg" alt="Konten Tanpa Batas"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="thumb-placeholder">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+          <span>thumb-konten-tanpa-batas.jpg</span>
+        </div>
+      </div>
+      <a href="https://lynk.id/iksan/xjk5g9zjx6vv" target="_blank" style="display:contents;text-decoration:none;color:inherit">
+        <div class="card-body">
+        <div class="card-format">Webinar</div>
+        <div class="card-title">Konten Tanpa Batas</div>
+        <div class="card-footer">
+          <div class="card-price">Rp10.000</div>
+          <div class="card-arrow">→</div>
+        </div>
+      </div>
+      </a>
+    </div>
+
+  </div>
+</div>
+
+<hr class="s-divider">
+<!-- ===== MENTORING ===== -->
+<hr class="s-divider">
+<div class="section-wrap" id="mentoring">
+  <div class="section-label">UPGRADE SKILL</div>
+  <h2 class="section-title">Mentoring Personal Branding</h2>
+  <p class="section-sub">Pertemuan rutin dengan tugas dan tantangan tiap minggu</p>
+  <div class="mentoring-grid">
+
+    <div class="mentoring-card">
+      <div class="m-format">1-on-1 · Meeting + WA</div>
+      <div class="m-price">Rp500K</div>
+      <div class="m-title">Konsultasi Personal Branding</div>
+      <div class="m-desc">Sesi privat untuk bahas strategi, arah konten, dan positioningmu secara langsung. 1 sesi = 50 menit.</div>
+      <a href="https://wa.me/6285399644464?text=Halo saya atas nama _____________, mau bekerjasama dengan Iksan Bangsawan untuk:%0APembicara acara,%0AEndorse brand,%0Aatau Mentoring konsultasi" target="_blank" class="btn-outline">Daftar sekarang →</a>
+    </div>
+
+    <div class="mentoring-card">
+      <div class="m-format">1-on-1 · Meeting</div>
+      <div class="m-price">Rp350K</div>
+      <div class="m-title">Audit Akun Instagram</div>
+      <div class="m-desc">Review menyeluruh profil, konten, dan strategi growth Instagram pribadi / bisnis.</div>
+      <a href="https://wa.me/6285399644464?text=Halo saya atas nama _____________, mau bekerjasama dengan Iksan Bangsawan untuk:%0APembicara acara,%0AEndorse brand,%0Aatau Mentoring konsultasi" target="_blank" class="btn-outline">Daftar sekarang →</a>
+    </div>
+
+    <div class="mentoring-card">
+      <div class="m-format">Grup · Meeting + WA</div>
+      <div class="m-price">Rp2,5jt</div>
+      <div class="m-title">Mentoring Personal Branding Grup</div>
+      <div class="m-desc">Belajar bareng, lebih terjangkau, dengan member yang wajib saling support.</div>
+      <a href="https://wa.me/6285399644464?text=Halo saya atas nama _____________, mau bekerjasama dengan Iksan Bangsawan untuk:%0APembicara acara,%0AEndorse brand,%0Aatau Mentoring konsultasi" target="_blank" class="btn-outline">Lihat jadwal →</a>
+    </div>
+
+    <div class="mentoring-card highlight">
+      <div class="m-format">Privat · Meeting + WA</div>
+      <div class="m-price">Rp3jt</div>
+      <div class="m-title">Mentoring Personal Branding Privat</div>
+      <div class="m-desc">Program intensif 1-on-1 khusus kamu — dari nol sampai personal brand yang kuat dan konsisten.</div>
+      <a href="https://wa.me/6285399644464?text=Halo saya atas nama _____________, mau bekerjasama dengan Iksan Bangsawan untuk:%0APembicara acara,%0AEndorse brand,%0Aatau Mentoring konsultasi" target="_blank" class="btn-outline">Konsultasi dulu →</a>
+    </div>
+
+  </div>
+</div>
+
+<hr class="s-divider">
+<!-- ===== TESTIMONIAL ===== -->
+<hr class="s-divider">
+<div class="section-wrap">
+  <div class="section-label">Testimoni</div>
+  <h2 class="section-title">Kata Mereka</h2>
+  <div class="testi-grid">
+
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <div class="testi-text">"Pokoknya keren pemaparan materinya, ditambah bumbu humoris dari coach bikin semangat belajar dan tidak bikin ngantuk bawaannya ketawa terus sampai selesai"</div>
+      <div class="testi-author">
+        <div class="testi-avatar">B</div>
+        <div><div class="testi-name">Bobby</div><div class="testi-role">Workshop Bank Indonesia</div></div>
+      </div>
+    </div>
+
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <div class="testi-text">"Kaaak, setelah mentoring ada brand yang nawar aku 200jt untuk kontrak satu tahun. Brand nasional. Followers dari 7ribu sekarang sudah 400ribu."</div>
+      <div class="testi-author">
+        <div class="testi-avatar">P</div>
+        <div><div class="testi-name">Pao Hilda</div><div class="testi-role">Alumni Program Personal Branding</div></div>
+      </div>
+    </div>
+
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <div class="testi-text">"satu bulan ikut kelas personal branding, kontenku fyp, pengikut naik 4ribu jadi 5ribu. Saya terapkan ke bisnis dan hasilnya masyaAllah FYP semua kak"</div>
+      <div class="testi-author">
+        <div class="testi-avatar">R</div>
+        <div><div class="testi-name">Rama</div><div class="testi-role">Pengusaha Brand Outdoor</div></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<hr class="s-divider">
+<!-- ===== CTA ===== -->
+<div class="cta-wrap">
+  <div class="cta-block">
+    <h2>Mari Join Whatsapp Group &amp; Community</h2>
+    <p>Dapatkan insight rutin tentang konten, personal branding dan bisnis. Bisa diskusi 2 arah.</p>
+    <a href="#" class="btn-dark">Join gratis sekarang →</a>
+  </div>
+</div>
+
+<hr class="s-divider">
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="footer-logo">Iksan Bangsawan <span></span></div>
+  <div class="footer-icons">
+
+    <a href="https://instagram.com/iksanbangsawan" target="_blank" aria-label="Instagram" class="footer-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="2" width="20" height="20" rx="5"/>
+        <circle cx="12" cy="12" r="4.5"/>
+        <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+      </svg>
+    </a>
+
+    <a href="https://threads.net/@iksanbangsawan" target="_blank" aria-label="Threads" class="footer-icon">
+      <svg viewBox="0 0 192 192" fill="currentColor">
+        <path d="M141.537 88.9883C140.71 88.5919 139.87 88.2104 139.019 87.8451C137.537 60.5382 122.616 44.905 97.5619 44.745C97.4484 44.7443 97.3355 44.7443 97.222 44.7443C82.2364 44.7443 69.7731 51.1409 62.102 62.7807L75.881 72.2328C81.6116 63.5383 90.6052 61.6848 97.2286 61.6848C97.3051 61.6848 97.3819 61.6848 97.4576 61.6855C105.707 61.7381 111.932 64.1366 115.961 68.814C118.893 72.2193 120.854 76.925 121.825 82.8638C114.511 81.6207 106.601 81.2385 98.145 81.7233C74.3247 83.0954 59.0111 96.9879 60.0396 116.292C60.5615 126.084 65.4397 134.508 73.775 140.011C80.8224 144.663 89.899 146.938 99.3323 146.423C111.79 145.74 121.563 140.987 128.381 132.296C133.559 125.696 136.834 117.143 138.28 106.366C144.217 109.949 148.617 114.664 151.047 120.332C155.179 129.967 155.42 145.8 142.501 158.708C131.182 170.016 117.576 174.908 97.0135 175.059C74.2042 174.89 56.9538 167.575 45.7381 153.317C35.2355 139.966 29.8077 120.682 29.6052 96C29.8077 71.3178 35.2355 52.0336 45.7381 38.6827C56.9538 24.4249 74.2039 17.11 97.0135 16.9405C119.988 17.1113 137.539 24.4614 149.184 38.788C154.894 45.8136 159.199 54.6488 162.037 64.9503L178.184 60.6422C174.744 47.9622 169.331 37.0357 161.965 27.974C147.036 9.60668 125.202 0.195148 97.0695 0H96.9569C68.8816 0.19447 47.2921 9.6418 32.7883 28.0282C19.8819 44.4864 13.2244 67.3157 13.0007 95.9325L13 96L13.0007 96.0675C13.2244 124.684 19.8819 147.514 32.7883 163.972C47.2921 182.358 68.8816 191.806 96.9569 192H97.0695C122.03 191.827 139.624 185.292 154.118 170.811C173.081 151.866 172.51 128.119 166.26 113.541C161.776 103.087 153.227 94.5962 141.537 88.9883ZM98.4405 129.507C88.0005 130.095 77.1544 125.409 76.6196 115.372C76.2232 107.93 81.9158 99.626 99.0812 98.6368C101.047 98.5234 102.976 98.468 104.871 98.468C111.106 98.468 116.939 99.0737 122.242 100.233C120.264 124.935 108.662 128.946 98.4405 129.507Z"/>
+      </svg>
+    </a>
+
+    <a href="https://tiktok.com/@iksanbangsawan" target="_blank" aria-label="TikTok" class="footer-icon">
+      <svg viewBox="0 0 24 24" fill="currentColor">
+        <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.75a4.85 4.85 0 0 1-1.01-.06z"/>
+      </svg>
+    </a>
+
+    <a href="https://youtube.com/@iksanbangsawan" target="_blank" aria-label="YouTube" class="footer-icon">
+      <svg viewBox="0 0 24 24" fill="currentColor">
+        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+      </svg>
+    </a>
+
+    <a href="https://wa.me/6285399644464" target="_blank" aria-label="WhatsApp" class="footer-icon">
+      <svg viewBox="0 0 24 24" fill="currentColor">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
+      </svg>
+    </a>
+
+    <a href="mailto:iksanbangsawan@gmail.com" aria-label="Email" class="footer-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="4" width="20" height="16" rx="2"/>
+        <path d="M2 7l10 7 10-7"/>
+      </svg>
+    </a>
+
+  </div>
+  <p>© 2026 · powered by Bisnity</p>
+</footer>
+
+<script>
+// Filter tabs
+const tabs = document.querySelectorAll('.tab');
+const cards = document.querySelectorAll('.product-card[data-cat]');
+
+tabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    tabs.forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    const filter = tab.dataset.filter;
+    cards.forEach(card => {
+      const cats = card.dataset.cat || '';
+      if (filter === 'all' || cats.includes(filter)) {
+        card.style.display = 'flex';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  });
+});
+</script>
+
 </body>
 </html>
